@@ -1,6 +1,10 @@
 // Requiring necessary npm packages
 let express = require("express");
 
+
+// Bea adds passport require
+var passport = require("./config/passport");
+
 // Setting up port and requiring models for syncing
 let PORT = process.env.PORT || 8080;
 
