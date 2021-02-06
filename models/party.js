@@ -29,11 +29,12 @@ module.exports = function (sequelize, DataTypes) {
 
 	});
 	Party.associate = models => {
-		Party.belongsTo(models.User, {
-			foreignKey: {
-				allowNull: false
-			}
-		});
-	};
+		//Each party belongs to a single User
+		models.Party.belongsTo(models.User, { as: "host" })
+		//Each Party can have many UserParties
+		models.Event.hasMany(models.UserParties, {
+			onDelete: "cascade"
+		})
+		}
 	return Party;
 };
