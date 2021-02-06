@@ -1,0 +1,43 @@
+<!-- Main Nav -->
+<nav class="navbar navbar-expand-lg py-3 px-4 auto-hiding-navbar">
+  <h4 class="mr-auto">Party-X</h4>
+  <a class="ml-auto px-3" href="#">Logout</a>
+</nav>
+<!-- End Main Nav -->
+
+<!-- Body Content -->
+<div class="holder">
+  <p class="user">User Name</p>
+  <div class="row">
+
+    <!-- Create Events Card -->
+    <div class="col-md-6 col-style">
+      <div class="card" id="createEvent">
+        <div class="card-body">
+          <h5 class="card-title">My Event</h5>
+          <hr />
+          <ul class="userEvents">
+          {{!-- List items --}}
+          </ul>
+          <button class="create-btn">Create Event</button>
+        </div>
+      </div>
+    </div>
+    <!-- End Of Create Events Card -->
+
+    <!-- Upcoming Events Card -->
+    <div class="col-sm-6 col-style">
+      <div class="card" id="upcoming">
+        <div class="card-body">
+          <h5 class="card-title">Upcoming Events</h5>
+          <hr />
+          <ul class="attendEvents">
+          {{!-- List items --}}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- End of Upcoming Events Card -->
+  </div>
+</div>
+<!-- End Body Content -->
