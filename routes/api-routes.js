@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+const { regexp } = require("sequelize/types/lib/operators");
 
 module.exports = function (app) {
 	// Using the passport.authenticate middleware with our local strategy.
@@ -42,17 +43,35 @@ module.exports = function (app) {
 	});
 	// Create route to attend a new party ; PUT request
 	app.put("/api/attend/:id"), function (req, res) {
-
+		db.User.update({
+			where : {
+				party: req.params.id
+			}
+		})
 	};
 
 	// Create route to create a new party ; POST request
 	app.post("/api/newparty"), function (req, res) {
-
+		db.Party.create({
+			title: req.body.title,
+			theme: req.body.theme,
+			data: req.body.data,
+			time: req.body.time,
+			location: req.body.location
+		})
+			.then(function(){
+				res.redirect(307, "/api/dashboard")
+			})
+			.catch(function(err){
+				res.status(401).json(err);
+			})
 	};
 
 	// Create find parties route
 	app.get("/api/findparties"), function (req, res) {
-
+		db.Party.findAll({}).then(function(dbParty){
+			res.json(dbParty)
+		})
 	};
 };
 
