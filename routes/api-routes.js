@@ -16,6 +16,7 @@ module.exports = function (app) {
 	// otherwise send back an error
 	app.post("/api/newuser", function (req, res) {
 		db.User.create({
+			name: req.body.name,
 			email: req.body.email,
 			password: req.body.password
 		})
