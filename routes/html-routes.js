@@ -11,7 +11,7 @@
      if (req.user) {
        res.redirect("/dashboard");
      }
-     res.sendFile(path.join(__dirname, "../public/signup.html"));
+     res.sendFile(path.join(__dirname, "../public/htmls/signup.html"));
    });
 
    app.get("/login", function(req, res) {
@@ -19,7 +19,7 @@
      if (req.user) {
        res.redirect("/members");
      }
-     res.sendFile(path.join(__dirname, "../public/login.html")); //****Add route once created */
+     res.sendFile(path.join(__dirname, "../public/htmls/login.html")); //****Add route once created */
    });
 
    // Here we've add our isAuthenticated middleware to this route.
@@ -28,6 +28,8 @@
 //      res.render(CALL IN HANDLEBARS);
    });
  };
+
+
 //Three pages
 //Login (static HTML)
 //Signup (static HTML)
