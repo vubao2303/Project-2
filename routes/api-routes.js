@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
-const { regexp } = require("sequelize/types/lib/operators");
+// const { regexp } = require("sequelize/types/lib/operators");
 
 module.exports = function (app) {
 	// Using the passport.authenticate middleware with our local strategy.
@@ -45,7 +45,7 @@ module.exports = function (app) {
 	app.put("/api/attend/:id"), function (req, res) {
 		db.User.update({
 			where : {
-				party: req.params.id
+				id: req.params.id
 			}
 		})
 	};
