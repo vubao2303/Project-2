@@ -14,7 +14,7 @@
      res.sendFile(path.join(__dirname, "../public/htmls/signup.html"));
    });
 
-   app.get("/login", function(req, res) {
+   app.get("/signin", function(req, res) {
      // If the user already has an account send them to the members page
      if (req.user) {
        res.redirect("/members");
