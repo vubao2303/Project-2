@@ -1,0 +1,69 @@
+/*-----------------------------*\
+
+      Rough styling just for 
+        a progessive visual 
+
+\*-----------------------------*/
+
+body {
+  background: lightgrey;
+  height: 100vh;
+}
+
+nav {
+  background-color: white;
+  box-shadow: 0px 1px 5px;
+}
+
+.holder {
+  margin: 0 20px;
+  padding: 10px 0;
+}
+
+.user {
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.row {
+  margin-top: 20px;
+}
+
+.col-style {
+  margin-top: 10px;
+}
+
+.card-title {
+  text-align: center;
+}
+
+#createEvent,
+#upcoming {
+  box-shadow: 3px 3px 6px;
+}
+
+#upcoming li,
+#createEvent li {
+  list-style: none;
+  margin: 10px 0;
+}
+
+#upcoming li button {
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: lightseagreen;
+  color: white;
+}
+
+.create-btn {
+  background: lightseagreen;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 10px;
+  margin: auto;
+  display: block;
+}
