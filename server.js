@@ -4,7 +4,6 @@ let session = require("express-session");
 // Bea adds passport require
 let passport = require("./config/passport");
 
-
 // Setting up port and requiring models for syncing
 let PORT = process.env.PORT || 8080;
 

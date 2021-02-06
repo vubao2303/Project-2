@@ -35,7 +35,7 @@
  		//Each party belongs to a single User
  		models.Party.belongsTo(models.User, { as: "host" })
  		//Each Party can have many UserParties
- 		models.Party.hasMany(models.UserParties, {
+ 		models.Party.hasMany(models.UserParty, {
  			onDelete: "cascade"
  		})
  		}
