@@ -2,9 +2,9 @@ $(document).ready(function() {
   // Getting references to our form and input
 
   var signUpForm = $("#signup"); 
-  var emailInput = $("input#email-input");//Match to html id/classes later
-  var passwordInput = $("input#password-input");//Match to html id/classes later
-  var nameInput = // Fill in once html page comes
+  var emailInput = $("#inputEmail");//Match to html id/classes later
+  var passwordInput = $("#inputPassword");//Match to html id/classes later
+  var nameInput = $("#inputName");
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("click", function(event) {
@@ -16,6 +16,7 @@ $(document).ready(function() {
       password: passwordInput.val().trim(),
      
     };
+    console.log(userData);
 
     if (!userData.name ||!userData.email || !userData.password) {
       return;
