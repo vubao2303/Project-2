@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 
-var passport = require("../config/"); //********Fill in route whenever passport js page is created */
+var passport = require("../config/passport"); 
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -27,12 +27,6 @@ module.exports = function(app) {
       });
   });
 
-  // Route for logging user out
-//   app.get("/logout", function(req, res) {
-//     req.logout();
-//     res.redirect("/");
-//   });
-
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
@@ -48,3 +42,16 @@ module.exports = function(app) {
     }
   });
 };
+
+// Create route to attend a new party ; PUT request
+
+
+// Create route to create a new party ; POST request
+
+
+
+  // Route for logging user out
+//   app.get("/logout", function(req, res) {
+//     req.logout();
+//     res.redirect("/");
+//   });
