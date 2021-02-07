@@ -9,23 +9,23 @@
    app.get("/", function(req, res) {
      // If the user already has an account send them to the dashboard page
      if (req.user) {
-       res.redirect("/dashboard");
+       res.redirect("/index");
      }
      res.sendFile(path.join(__dirname, "../public/htmls/signup.html"));
    });
 
-   app.get("/signin", function(req, res) {
+   app.get("/login", function(req, res) {
      // If the user already has an account send them to the members page
      if (req.user) {
-       res.redirect("/dashboard");
+       res.redirect("/index");
      }
      res.sendFile(path.join(__dirname, "../public/htmls/login.html"));
    });
-
+// B CHANGE LINE 27 from /dashboard to /index
    // Here we've add our isAuthenticated middleware to this route.
    // If a user who is not logged in tries to access this route they will be redirected to the signup page
-   app.get("/dashboard", isAuthenticated, function(req, res) {
-     res.sendFile(path.join(__dirname, "../public/htmls/"))
+   app.get("/index", isAuthenticated, function(req, res) {
+     res.sendFile(path.join(__dirname, "../public/htmls/index.html"))
    });
  };
 

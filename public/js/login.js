@@ -1,13 +1,13 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Getting references to our form and inputs
   var loginForm = $("#signin");
   var emailInput = $("#inputEmail");
   var passwordInput = $("#inputPassword");
-  
+
 
 
   // When the form is submitted, we validate there's an email and password entered
-  loginForm.on("click", function(event) {
+  loginForm.on("click", function (event) {
     event.preventDefault();
     var userData = {
       email: emailInput.val().trim(),
@@ -32,11 +32,11 @@ $(document).ready(function() {
       email: email,
       password: password
     })
-      .then(function() {
-        window.location.replace("/dashboard");
+      .then(function () {
+        window.location.replace("/index");
         // If there's an error, log the error
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log(err);
       });
   }

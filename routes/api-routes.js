@@ -21,7 +21,7 @@ module.exports = function (app) {
 			password: req.body.password
 		})
 			.then(function () {
-				res.redirect(307, "/signin");
+				res.redirect(307, "/api/signin");
 			})
 			.catch(function (err) {
 				res.status(401).json(err);
@@ -42,6 +42,11 @@ module.exports = function (app) {
 			});
 		}
 	});
+
+	app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
 	// Create route to attend a new party ; PUT request
 	app.put("/api/attend/:id"), function (req, res) {
 		db.User.update({

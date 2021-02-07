@@ -36,9 +36,9 @@ $(document).ready(function () {
 			password: password
 		})
 
-			// Bea-this will require a diffrent page 
+			// Bea-line41 change from /api/signin to /index
 			.then(function (data) {
-				window.location.replace("/api/signin");
+				window.location.replace("/index");
 				// If there's an error, handle it by throwing up a bootstrap alert
 			})
 			.catch(handleLoginErr);
