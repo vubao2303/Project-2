@@ -42,6 +42,11 @@ module.exports = function (app) {
 			});
 		}
 	});
+
+	app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
 	// Create route to attend a new party ; PUT request
 	app.put("/api/attend/:id"), function (req, res) {
 		db.User.update({
