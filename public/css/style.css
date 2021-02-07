@@ -4,7 +4,7 @@
         a progessive visual 
 
 \*-----------------------------*/
-
+html,
 body {
   background: lightgrey;
   height: 100vh;
@@ -78,8 +78,10 @@ a:active {
 }
 
 #upcoming li,
-#createEvent li {
+#createEvent li,
+#allEvents li {
   list-style: none;
+  font-size: 16px;
 }
 
 /*? Button Styling */
@@ -150,10 +152,10 @@ a:active {
   background-image: url("bg.jpeg");
 } */
 /* hero img  */
-body,
+/* body,
 html {
   height: 100%;
-}
+} */
 
 /* The hero image */
 .hero-image {

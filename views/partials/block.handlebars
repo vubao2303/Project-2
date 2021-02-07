@@ -1,7 +1,10 @@
 {{!-- Create Event <li> --}}
+<li class="list-group-item">
+    {{}}
+    <button class="li-btn" data-id="{{id}}">Delete Party</button>
+</li>
 
-
-    {{!-- Upcoming Events --}}
+{{!-- Upcoming Events --}}
 
 <li>
     {{event_name}}
@@ -27,11 +30,12 @@
 </li>
 <div class="collapse" id="eventInfo-all">
     <div class="card card-body">
-        <h5>Host: {{}}</h5>
-        <span></span>
-        <span></span>
-        <span></span>
+        <p class="host-name">Host: {{}}</p>
+        <span>Theme: {{}}</span>
+        <span>Location: {{}}</span>
+        <span>Date: {{}}</span>
+        <span>Time: {{}}</span>
         <hr />
-        <button class="li-btn">Attend Party</button>
+        <button class="li-btn" data-id='{{id}}'>Attend Party</button>
     </div>
 </div>
