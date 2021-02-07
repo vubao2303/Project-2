@@ -5,7 +5,7 @@ var exphbs = require("express-handlebars");
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function (app) {
+module.exports = function(app) {
 
   app.get("/", function (req, res) {
     // If the user already has an account send them to the dashboard page
