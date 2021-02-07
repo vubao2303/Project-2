@@ -82,15 +82,6 @@ a:active {
   list-style: none;
 }
 
-.li-btn {
-  background-color: lightseagreen;
-  color: white;
-  margin-left: 10px;
-  border-radius: 5px;
-  border: none;
-  float: right;
-}
-
 .create-btn {
   background: lightseagreen;
   color: white;
@@ -101,6 +92,31 @@ a:active {
   display: block;
 }
 
+.li-btn {
+  background-color: lightseagreen;
+  color: white;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+  float: right;
+}
+
+.li-btn-delete {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 20px;
+  float: right;
+}
+
+/** Extra Styling */
+
+/*? Modal Styling */
+
+/*--------------------------------*\
+         Landing Page Style
+\*--------------------------------*/
 .party-form {
   background-image: url("pn2.png");
 }
@@ -109,37 +125,38 @@ a:active {
   background-image: url("bg.jpeg");
 } */
 /* hero img  */
-body, html {
+body,
+html {
   height: 100%;
 }
 
 /* The hero image */
 .hero-image {
-/* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("bg.jpeg");
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("bg.jpeg");
 
-/* Set a specific height */
-height: 50%;
+  /* Set a specific height */
+  height: 50%;
 
-/* Position and center the image to scale nicely on all screens */
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-position: relative;
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 /* Place text in the middle of the image */
 .hero-text {
-text-align: center;
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-color: white;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
 }
 
 .form-group {
   color: black;
   padding: 1em;
-  
 }

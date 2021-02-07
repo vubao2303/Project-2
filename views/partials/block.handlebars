@@ -4,18 +4,17 @@
     {{!-- Upcoming Events --}}
 
 <li>
-    {{event_name}} <span>{{}}</span>
-    <button class="li-btn-delete" data-id="{{id}}">delete</button>
-    <button class="li-btn" type="button" data-id="{{id}}" data-toggle="collapse" data-target="#eventInfo-upcoming"
+    {{event_name}}
+    <button class="li-btn" type="button" data-id="{{id}}" data-toggle="collapse" data-target="{{}}"
         aria-expanded="false" aria-controls="eventInfo-upcoming">view</button>
 </li>
-<div class="collapse" id="eventInfo-upcoming">
+<div class="collapse" id="{{}}">
     <div class="card card-body">
-        <p>{{}}</p>
-        <ul>
-            <li>Theme:{{}}</li>
-            <li>Time: {{}}</li>
-            <li>Location: {{}}</li>
-        </ul>
+        <span>Theme:{{}}</span>
+        <span>Date: {{}}</span>
+        <span>Time:{{}}</span>
+        <span>Location:{{}}</span>
+        <hr />
+        <span><button class="li-btn-delete" data-id="{{id}}">delete</button></span>
     </div>
 </div>
