@@ -10,7 +10,25 @@ $(document).ready(function () {
 			time: $("#eventTime").val().trim(),
 			location: $("#eventLoc").val().trim()
 		};
+		newParty(party.title, party.theme, party.date, party.time, party.location);
 
-		//AJAX POST to insert new row in party table
+		//AJAX POST to insert new row in party table		
+		function newParty(title, theme, date, time, location) {
+			$.post("/api/newparty", {
+				title: title,
+				theme: theme,
+				date: date,
+				time: time,
+				location: location
+
+			}).then(function () {
+				window.location.reload();
+			})
+		}
+
+
 	});
-})
+
+
+
+});
