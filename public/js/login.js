@@ -3,7 +3,7 @@ $(document).ready(function () {
   var loginForm = $("#signin");
   var emailInput = $("#inputEmail");
   var passwordInput = $("#inputPassword");
-
+ var msg =$("#message")
 
 
   // When the form is submitted, we validate there's an email and password entered
@@ -39,5 +39,29 @@ $(document).ready(function () {
       .catch(function (err) {
         console.log(err);
       });
-  }
+  }; 
+
+
+  function verifyPassword() {  
+    //check empty password field  
+    if(passwordInput == "") {  
+       msg = "password cannot be empty";  
+       return false;  
+    }  
+     
+   //minimum password length validation  
+    if(passwordInput.length < 4) {  
+       msg = "**Password length must be atleast 8 characters";  
+       return false;  
+    }  
+    
+  //maximum length of password validation  
+    if(passwordInput.length > 15) {  
+      msg= "**Password length must not exceed 15 characters";  
+       return false;  
+    } else {  
+       loginUser();  
+    }  
+  }  
+
 });
