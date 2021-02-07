@@ -4,14 +4,18 @@
     {{!-- Upcoming Events --}}
 
 <li>
-    {{event_name}}
+    {{event_name}} <span>{{}}</span>
     <button class="li-btn-delete" data-id="{{id}}">delete</button>
     <button class="li-btn" type="button" data-id="{{id}}" data-toggle="collapse" data-target="#eventInfo-upcoming"
         aria-expanded="false" aria-controls="eventInfo-upcoming">view</button>
 </li>
 <div class="collapse" id="eventInfo-upcoming">
     <div class="card card-body">
-        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user
-        activates the relevant trigger.
+        <p>{{}}</p>
+        <ul>
+            <li>Theme:{{}}</li>
+            <li>Time: {{}}</li>
+            <li>Location: {{}}</li>
+        </ul>
     </div>
 </div>
