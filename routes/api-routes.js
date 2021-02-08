@@ -77,7 +77,7 @@ module.exports = function (app) {
 	// Create find parties route
 	app.get("/api/findparties"), function (req, res) {
 		db.Party.findAll({}).then(function(dbParty){
-			res.json(dbParty)
+			res.json(dbParty);
 		})
 	};
 };
