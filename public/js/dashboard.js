@@ -1,4 +1,11 @@
 $(document).ready(function () {
+let currentUserId;
+
+	$.get("/api/user_data").then(function (data) {
+		 currentUserId = data.id;
+	});
+
+
 
 	//Create new party 
 	$("#createPartyBtn").on("click", function () {
@@ -7,8 +14,9 @@ $(document).ready(function () {
 			theme: $("#eventTheme").val().trim(),
 			date: $("#eventDate").val(),
 			time: $("#eventTime").val(),
-			location: $("#eventLoc").val().trim()
-		}).then(function(){
+			location: $("#eventLoc").val().trim(),
+			hostId: currentUserId
+		}).then(function () {
 			window.location.reload();
 		})
 	});
