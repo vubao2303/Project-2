@@ -21,3 +21,28 @@ let currentUserId;
 		})
 	});
 });
+
+
+// function allParties(){
+// 	$(#allEvent)
+// 	var allP= `
+// 	<div class="row">
+//     <div class="col col-md-1"></div>
+//     <div class="col col-md-10">
+//       <div class="card" id="allEvents">
+//         <div class="card-body">
+//           <h5 class="card-title">All Events</h5>
+//           <hr />
+//           <ul class="allEvents-list">
+          
+//           </ul>
+//         </div>
+//       </div>
+//     </div>
+//     <div class="col col-md-1"></div>
+//     <!-- IGNORE TOP COL-->
+//   </div>
+//   <!-- End All Events -->
+// </div>
+// 	`
+// }
