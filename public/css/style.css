@@ -8,7 +8,7 @@ html,
 body {
   background: lightgrey;
   height: 100vh;
-  /* background-image: url(bg.jpeg); */
+  background-image: url(bg.jpeg);
 }
 
 /** Removing base link styling */
