@@ -67,11 +67,11 @@ module.exports = function (app) {
 			location: req.body.location
 		})
 			.then(function(){
-				res.redirect(307, "/api/dashboard")
+				res.send(200);
 			})
-			.catch(function(err){
-				res.status(401).json(err);
-			})
+			// .catch(function(err){
+			// 	res.status(401).json(err);
+			// })
 	});
 
 	// Create find parties route
