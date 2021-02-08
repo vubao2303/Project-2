@@ -66,7 +66,7 @@ module.exports = function (app) {
 			date: req.body.date,
 			time: req.body.time,
 			location: req.body.location,
-			hostId: hostId
+			hostId: req.body.hostId
 		})
 			.then(function(){
 				res.send(200);
