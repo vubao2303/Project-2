@@ -13,7 +13,7 @@ $(document).ready(function () {
 			name: nameInput.val().trim(),
 			email: emailInput.val().trim(),
 			password: passwordInput.val().trim(),
-
+			verifyPassword()
 		};
 
 		// if (!userData.name || !userData.email || !userData.password) {
@@ -34,7 +34,28 @@ $(document).ready(function () {
     if (!userData.password) {
       alert('Please enter an password for your account.');
       return;
-    }
+		}
+		function verifyPassword() {  
+			//check empty password field  
+			if(passwordInput == "") {  
+				 msg = "password cannot be empty";  
+				 return false;  
+			} 
+			 
+		 //minimum password length validation  
+			if(passwordInput.length < 4) {  
+				 msg = "**Password length must be atleast 4 characters";  
+				 return false;  
+			}  
+			
+		//maximum length of password validation  
+			if(passwordInput.length > 15) {  
+				msg= "**Password length must not exceed 15 characters";  
+				 return false;  
+			} else {  
+				 loginUser();  
+			}  
+
 
 		// If we have an email and password, run the signUpUser function
 		signUpUser(userData.name, userData.email, userData.password);
