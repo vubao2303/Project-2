@@ -4,7 +4,7 @@
         a progessive visual 
 
 \*-----------------------------*/
-
+html,
 body {
   background: lightgrey;
   height: 100vh;
@@ -78,9 +78,13 @@ a:active {
 }
 
 #upcoming li,
-#createEvent li {
+#createEvent li,
+#allEvents li {
   list-style: none;
+  font-size: 16px;
 }
+
+/*? Button Styling */
 
 .create-btn {
   background: lightseagreen;
@@ -110,6 +114,29 @@ a:active {
   float: right;
 }
 
+.modal-submit-btn {
+  background: lightseagreen;
+  color: white;
+  padding: 5px 30px;
+  border-radius: 5px;
+  border: none;
+}
+
+.modal-close-btn {
+  background: rgb(95, 95, 95);
+  color: white;
+  padding: 5px 30px;
+  border-radius: 5px;
+  border: none;
+}
+
+.li-btn:hover,
+.li-btn-delete:hover,
+.modal-submit-btn:hover,
+.modal-close-btn:hover {
+  opacity: 0.8;
+}
+
 /** Extra Styling */
 
 /*? Modal Styling */
@@ -125,10 +152,10 @@ a:active {
   background-image: url("bg.jpeg");
 } */
 /* hero img  */
-body,
+/* body,
 html {
   height: 100%;
-}
+} */
 
 /* The hero image */
 .hero-image {
