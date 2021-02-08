@@ -21,9 +21,6 @@
  		time: {
  			type: DataTypes.TIME,
  			allowNull: false,
- 			validate: {
- 				isTime: true
- 			}
  		},
  		location: {
  			type: DataTypes.STRING,
