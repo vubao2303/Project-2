@@ -38,7 +38,8 @@ module.exports = function (app) {
 			// Sending back a password, even a hashed password, isn't a good idea
 			res.json({
 				email: req.user.email,
-				id: req.user.id
+				id: req.user.id,
+				name: req.user.name
 			});
 		}
 	});
@@ -64,7 +65,8 @@ module.exports = function (app) {
 			theme: req.body.theme,
 			date: req.body.date,
 			time: req.body.time,
-			location: req.body.location
+			location: req.body.location,
+			hostId: hostId
 		})
 			.then(function(){
 				res.send(200);
@@ -80,6 +82,15 @@ module.exports = function (app) {
 			res.json(dbParty);
 		})
 	};
+
+	// Route to present parties on userdashboard
+	app.get("/api/userdashboard"), function(req,res){
+		db.Party.findAll({
+
+		})
+	}
+
+
 };
 
 
