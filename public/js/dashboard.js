@@ -28,6 +28,7 @@ $(document).ready(function () {
   // });
 });
 
+
 function displayHtml(input) {
   //todo get array of objects that represent this users hosted party
   //todo construct long ass string of html
@@ -72,3 +73,4 @@ function displayHtml(input) {
 // }).then((response) => {
 //   console.log(response);
 // });
+
