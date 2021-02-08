@@ -1,48 +1,76 @@
 $(document).ready(function () {
-let currentUserId;
+  let currentUserId;
 
-	$.get("/api/user_data").then(function (data) {
-		 currentUserId = data.id;
-	});
+  $.get("/api/user_data").then(function (data) {
+    currentUserId = data.id;
+    console.log(currentUserId);
+  });
 
+  //Create new party
+  $("#createPartyBtn").on("click", function () {
+    $.post("/api/newparty", {
+      title: $("#eventTitle").val().trim(),
+      theme: $("#eventTheme").val().trim(),
+      date: $("#eventDate").val(),
+      time: $("#eventTime").val(),
+      location: $("#eventLoc").val().trim(),
+      hostId: currentUserId,
+    }).then(function () {
+      window.location.reload();
+    });
+  });
 
-
-	//Create new party 
-	$("#createPartyBtn").on("click", function () {
-		$.post("/api/newparty", {
-			title: $("#eventTitle").val().trim(),
-			theme: $("#eventTheme").val().trim(),
-			date: $("#eventDate").val(),
-			time: $("#eventTime").val(),
-			location: $("#eventLoc").val().trim(),
-			hostId: currentUserId
-		}).then(function () {
-			window.location.reload();
-		})
-	});
+  // $.get("/api/hostedparty", {
+  //   user_id: currentUserId,
+  // }).then((response) => {
+  //   console.log(response);
+  //   displayHtml(response);
+  // });
 });
 
 
-// function allParties(){
-// 	$(#allEvent)
-// 	var allP= `
-// 	<div class="row">
-//     <div class="col col-md-1"></div>
-//     <div class="col col-md-10">
-//       <div class="card" id="allEvents">
-//         <div class="card-body">
-//           <h5 class="card-title">All Events</h5>
-//           <hr />
-//           <ul class="allEvents-list">
-          
-//           </ul>
-//         </div>
-//       </div>
-//     </div>
-//     <div class="col col-md-1"></div>
-//     <!-- IGNORE TOP COL-->
-//   </div>
-//   <!-- End All Events -->
-// </div>
-// 	`
-// }
+function displayHtml(input) {
+  //todo get array of objects that represent this users hosted party
+  //todo construct long ass string of html
+  //todo interate through array of objects and add on to LAS
+  //todo Append this list to the "hosted-list-items" <ul>
+  //todo function that takes in string? and jquery destination
+
+  const displayhtml = `<li class="list-group-item" data-id="${input.id}">${input.title}
+
+	<button
+		class="li-btn"
+		type="button"
+		data-toggle="collapse"
+		data-target="#eventInfo-hosted"
+		aria-expanded="false"
+		aria-controls="eventInfo-hosted">
+		View Info
+	</button>
+</li>
+
+	<div class="collapse" id="eventInfo-hosted">
+		<div class="card card-body">
+			<span>Theme: ${input.theme}</span>
+			<span>Date: ${input.date}</span>
+			<span>Time: ${input.time}</span>
+			<span>Location: ${input.location}</span>
+			<hr />
+			<span><button class="li-btn-delete">Delete</button></span>
+		</div>
+	</div>
+		`;
+
+  parties.forEach((party) => $(".userEvents").append(displayhtml));
+}
+
+// parties.forEach((party) => $(".userEvents").append(displayhtml));
+
+//
+
+// $.post("/api/newparty", {
+//   user_id: currentUserId,
+// }).then((response) => {
+//   console.log(response);
+// });
+
