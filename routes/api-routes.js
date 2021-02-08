@@ -56,27 +56,28 @@ module.exports = function (app) {
 		})
 	};
 
-	// Create route to create a new party ; POST request
-	app.post("/api/newparty"), function (req, res) {
+	// Create a new party
+	app.post("/api/newparty", function (req, res) {
+		console.log(req.body);
 		db.Party.create({
 			title: req.body.title,
 			theme: req.body.theme,
-			data: req.body.data,
+			date: req.body.date,
 			time: req.body.time,
 			location: req.body.location
 		})
 			.then(function(){
-				res.redirect(307, "/api/dashboard")
+				res.send(200);
 			})
-			.catch(function(err){
-				res.status(401).json(err);
-			})
-	};
+			// .catch(function(err){
+			// 	res.status(401).json(err);
+			// })
+	});
 
 	// Create find parties route
 	app.get("/api/findparties"), function (req, res) {
 		db.Party.findAll({}).then(function(dbParty){
-			res.json(dbParty)
+			res.json(dbParty);
 		})
 	};
 };
