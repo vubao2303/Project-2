@@ -16,9 +16,26 @@ $(document).ready(function () {
 
 		};
 
-		if (!userData.name || !userData.email || !userData.password) {
-			return;
+		// if (!userData.name || !userData.email || !userData.password) {
+		// 	return;
+		// }
+
+		// B- adding errors message 
+		if (!userData.name ) {
+      alert('Please enter your name to sign up.');
+      return;
 		}
+		
+		if (!userData.email) {
+      alert('Please enter an email address to sign up.');
+      return;
+    }
+
+    if (!userData.password) {
+      alert('Please enter an password for your account.');
+      return;
+    }
+
 		// If we have an email and password, run the signUpUser function
 		signUpUser(userData.name, userData.email, userData.password);
 		nameInput.val("");
