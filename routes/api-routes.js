@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var { Op } = require("sequelize");
 // const { regexp } = require("sequelize/types/lib/operators");
 
 module.exports = function (app) {
@@ -51,8 +52,8 @@ module.exports = function (app) {
       },
     }).then((data) => {
       res.json(data);
-    }
-  )});
+    });
+  });
 
   app.get("/logout", function (req, res) {
     req.logout();
@@ -86,25 +87,54 @@ module.exports = function (app) {
     // })
   });
 
-  // Create find parties route
-  app.get("/api/attendparty"),
-    function (req, res) {
-      db.UserParty.findAll({
-        where: {
-          UserId: req.user.id,
+  // route used to get all events
+  app.get("/api/event", (req, res) => {
+    // search Event table for all events
+    console.log("made it to events");
+    db.Party.findAll({
+      // join User since it contains the host's name
+      where: {
+        hostId: {
+          [Op.not]: req.user.id,
         },
-        include: {
-          model: db.Party,
-          include: {
-            model: db.User,
-            as: "host",
-            attributes: ["name"],
-          },
+      },
+      include: [
+        {
+          model: db.User,
+          as: "host",
+          attributes: ["name"],
         },
-      }).then(function (dbUserParty) {
-        res.json(dbUserParty);
+      ],
+    })
+      .then((events) => {
+        res.json(events);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(false);
       });
-    };
+  });
+
+  // // Create find parties route
+  // app.get("/api/attendparty"),
+  //   function (req, res) {
+  //     console.log("Made it to attend party")
+  //     db.UserParty.findAll({
+  //       where: {
+  //         UserId: req.user.id,
+  //       },
+  //       include: {
+  //         model: db.Party,
+  //         include: {
+  //           model: db.User,
+  //           as: "host",
+  //           attributes: ["name"]
+  //         }
+  //       }
+  //     }).then(function (dbUserParty) {
+  //       res.json(dbUserParty);
+  //     });
+  //   };
 
   // Route to present parties on userdashboard
   app.get("/api/allparties"),

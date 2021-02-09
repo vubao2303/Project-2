@@ -15,13 +15,16 @@ $(document).ready(function () {
   $.get("/api/hostedparty").then((response) => {
     displayHtml(response, "host");
   });
+
+  //   $.get("/api/attendparty").then((response) => {
+  //     console.log(response, "attend");
+  // });
+  $.get("/api/event").then((response) => {
+    displayHtml(response, "avail");
+
+    //displayHtml(response);
+  });
 });
-
-// $.get("/api/attendparty").then((response) => {
-//   console.log(response);
-//   //displayHtml(response);
-// });
-
 // $.get("/api/allparties").then((response) => displayHtml(response, "avail"));
 
 function displayHtml(input, target) {
@@ -50,7 +53,7 @@ function displayHtml(input, target) {
 		</div>
 	</div>
 		`;
-    
+
     switch (target) {
       case "host":
         console.log("Made it to host case");
