@@ -5,9 +5,7 @@ var exphbs = require("express-handlebars");
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function(app) {
-
-
+module.exports = function (app) {
   app.get("/", function (req, res) {
     // If the user already has an account send them to the dashboard page
     if (req.user) {
@@ -27,17 +25,7 @@ module.exports = function(app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/index", isAuthenticated, function (req, res) {
-    // $.get("/userdashboard").then(function(data, err){
-    //   // construct hbsObject 
-      
-    // })
-
-    res.render("index");
+    if (req.user)
+      res.sendFile(path.join(__dirname, "../public/htmls/index.html"));
   });
 };
-
-
-//Three pages
-//Login (static HTML)
-//Signup (static HTML)
-//Dashboard (handlebars template engine)
