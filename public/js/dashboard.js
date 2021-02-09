@@ -27,7 +27,7 @@ $(document).ready(function () {
   });
 
   $.get("/api/hostedparty").then((response) => {
-    displayHtml(response, "host");
+    hostedHtml(response);
   });
 
   $.get("/api/attendingparties").then((response) => {
@@ -41,7 +41,8 @@ $(document).ready(function () {
 });
 
 
-function displayHtml(input, target) {
+function hostedHtml(input) {
+  console.log(input);
   for (var i = 0; i < input.length; i++) {
     var html = `<li class="list-group-item" data-id=${input[i].id}>${input[i].title}
 
@@ -67,7 +68,10 @@ function displayHtml(input, target) {
 		</div>
 	</div>
 		`;
-    
+
+
+    $(".userEvents").append(html);
+
     $(document).on("click", ".li-btn-delete", (e) => {
       console.log(e.target.id);
       console.log($(this));
@@ -81,24 +85,85 @@ function displayHtml(input, target) {
         window.location.reload();
       });
     });
-
-
-    switch (target) {
-      case "host":
-        console.log("Made it to host case");
-        $(".userEvents").append(html);
-
-        break;
-      case "attend":
-        console.log("Made it to attend case");
-        $(".attendEvents").append(html);
-        break;
-      case "avail":
-        console.log("Made it to avail case");
-        $(".allEvents-list").append(html);
-        break;
-    }
   }
 }
 
-// $(document).on("ready", displayHtml);
+function allParties(input) {
+  for (var i = 0; i < input.length; i++) {
+    var html = `<li class="list-group-item">${input[i].title}
+  <button
+    class="li-btn"
+    data-id=""
+    data-toggle="collapse"
+    data-target="#eventInfo-all"
+    >View Party</button>
+  </li>
+
+  <div class="collapse" id="eventInfo-all">
+    <div class="card card-body">
+
+      <p class="host-name">Host: $input[i].name}</p> 
+
+
+      <p>Theme:${input[i].theme}</p>
+      <p>Location:${input[i].location}</p>
+      <p>Date:${input[i].date}</p>
+      <p>Time:${input[i].time}</p>
+      <hr />
+      <button id=${input[i].id} class="attend-btn" data-id=${input[i].id}>Attend Party</button>
+    </div>
+  </div>`;
+
+    $(".allEvents-list").append(html);
+
+  }
+}
+
+function upcomingParties(input) {
+  // console.log(input);
+  for (var i = 0; i < input.length; i++) {
+    var html = `<li class="list-group-item" data-id=${input[i].id}>${input[i].title}
+
+	<button
+		class="li-btn"
+		type="button"
+		data-toggle="collapse"
+		data-target="#inputInfo-hosted"
+		aria-expanded="false"
+		aria-controls="inputInfo-hosted">
+		View Info
+	</button>
+</li>
+
+	<div class="collapse" id="inputInfo-hosted">
+		<div class="card card-body">
+
+      <p class="host-name">Host: ${input[i].name}</p>
+
+			<span>Theme: ${input[i].theme}</span>
+			<span>Date: ${input[i].date}</span>
+			<span>Time: ${input[i].time}</span>
+			<span>Location: ${input[i].location}</span>
+			<hr />
+			<span><button id=${input[i].id} class="li-btn-delete" data-id=${input[i].id}>Delete</button></span>
+		</div>
+	</div>
+		`;
+
+    $(".userEvents").append(html);
+
+    $(document).on("click", ".li-btn-delete", (e) => {
+      console.log(e.target.id);
+      console.log($(this));
+      var id = e.target.id;
+      console.log(id);
+      $.ajax({
+        url: "/api/hostedparty/" + id,
+        method: "DELETE",
+      }).then(() => {
+        console.log("Deleted");
+        window.location.reload();
+      });
+    });
+  }
+}
