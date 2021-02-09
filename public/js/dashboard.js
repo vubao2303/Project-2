@@ -12,17 +12,34 @@ $(document).ready(function () {
     });
   });
 
+  $(document).on("click", ".attend-btn", function (e) {
+    id = e.target.id;
+    $.get("/api/addattendee/:" + id).then(() => {
+      window.reload();
+    });
+  });
+
+  $(document).on("click", "PLACEHOLDER", function (e) {
+    id = e.target.id;
+    $.get("/api/unattend/:" + id).then(() => {
+      window.reload();
+    });
+  });
+
   $.get("/api/hostedparty").then((response) => {
     hostedHtml(response);
   });
+
+  $.get("/api/attendingparties").then((response) => {
+    displayHtml(response, "attend");
+  });
+
+  $.get("/api/availableparty").then((response) => {
+    displayHtml(response, "avail");
+
+  });
 });
 
-// $.get("/api/attendparty").then((response) => {
-//   console.log(response);
-//   //displayHtml(response);
-// });
-
-// $.get("/api/allparties").then((response) => displayHtml(response, "avail"));
 
 function hostedHtml(input) {
   console.log(input);
@@ -51,6 +68,7 @@ function hostedHtml(input) {
 		</div>
 	</div>
 		`;
+
 
     $(".userEvents").append(html);
 
@@ -86,6 +104,7 @@ function allParties(input) {
 
       <p class="host-name">Host: $input[i].name}</p> 
 
+
       <p>Theme:${input[i].theme}</p>
       <p>Location:${input[i].location}</p>
       <p>Date:${input[i].date}</p>
@@ -96,6 +115,7 @@ function allParties(input) {
   </div>`;
 
     $(".allEvents-list").append(html);
+
   }
 }
 
