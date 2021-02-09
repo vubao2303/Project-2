@@ -27,7 +27,7 @@ $(document).ready(function () {
 
 function displayHtml(input) {
   for (var i = 0; i < input.length; i++) {
-    const displayhtml = `<li class="list-group-item" data-id="${input[i].id}">${input[i].title}
+    const html = `<li class="list-group-item" data-id="${input[i].id}">${input[i].title}
 
 	<button
 		class="li-btn"
@@ -52,7 +52,7 @@ function displayHtml(input) {
 	</div>
 		`;
 
-    $(".userEvents").append(displayHtml);
+    $(".userEvents").append(html);
   }
 }
 
