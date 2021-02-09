@@ -12,7 +12,6 @@ module.exports = function (app) {
     res.json(req.user);
   });
 
-  
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
@@ -61,7 +60,6 @@ module.exports = function (app) {
     });
   });
 
-
   // Create a new party
   app.post("/api/newparty", function (req, res) {
     console.log(req.body);
@@ -81,7 +79,7 @@ module.exports = function (app) {
   });
 
   // route used to get all events
-  app.get("/api/event", (req, res) => {
+  app.get("/api/availableparty", (req, res) => {
     // search Event table for all events
     console.log("made it to events");
     db.Party.findAll({
@@ -107,25 +105,32 @@ module.exports = function (app) {
         res.send(false);
       });
   });
-
-  // Create find parties route
-  app.get("/api/attendparty",
-    function (req, res) {
-      console.log("Made it to attend party");
-      db.UserParty.findAll({
-        where: {
-          UserId: req.user.id,
-        },
-        include: {
-          model: db.Party,
-          include: {
-            model: db.User,
-            as: "host",
-            attributes: ["name"],
-          },
-        },
-      }).then(function (dbUserParty) {
-        res.json(dbUserParty);
-      });
+  // Attend party route
+  app.get("/api/attendingparties", function (req, res) {
+    console.log("Made it to attend party");
+    db.UserParty.findAll({
+      where: {
+        UserId: req.user.id,
+      },
+      include: {
+        model: db.Party,
+        // include: {
+        //   model: db.User,
+        //   as: "host",
+        //   attributes: ["name"],
+        // },
+      },
+    }).then(function (dbUserParty) {
+      res.json(dbUserParty);
     });
-}
+  });
+
+  app.post("/api/addattendee/:id", function (req, res) {
+    db.UserParty.create({
+      PartyId : req.param.id,
+       UserId : req.user.id 
+    }).then(function (){
+      res.send(200);
+    });
+  });
+};

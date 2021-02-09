@@ -12,15 +12,22 @@ $(document).ready(function () {
     });
   });
 
+  $(document).on("click", ".attend-btn", function (e) {
+    id = e.target.id;
+    $.get("/api/addattendee/:" + id).then(() => {
+      window.reload();
+    });
+  });
+
   $.get("/api/hostedparty").then((response) => {
     displayHtml(response, "host");
   });
 
-  $.get("/api/attendparty").then((response) => {
-    console.log(response, "attend");
+  $.get("/api/attendingparties").then((response) => {
+    displayHtml(response, "attend");
   });
 
-  $.get("/api/event").then((response) => {
+  $.get("/api/availableparty").then((response) => {
     displayHtml(response, "avail");
 
     //displayHtml(response);
@@ -61,9 +68,11 @@ function displayHtml(input, target) {
         $(".userEvents").append(html);
         break;
       case "attend":
+        console.log("Made it to attend case");
         $(".attendEvents").append(html);
         break;
       case "avail":
+        console.log("Made it to avail case");
         $(".allEvents-list").append(html);
         break;
     }
