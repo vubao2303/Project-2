@@ -12,17 +12,20 @@ $(document).ready(function () {
     });
   });
 
-  $.get("/api/hostedparty").then((response) => displayHtml(response));
+  $.get("/api/hostedparty").then((response) => {
+    console.log(response);
+    displayHtml(response);
+  });
 });
 
-function displayHtml(input) {
-  //todo get array of objects that represent this users hosted party
-  //todo construct long ass string of html
-  //todo interate through array of objects and add on to LAS
-  //todo Append this list to the "hosted-list-items" <ul>
-  //todo function that takes in string? and jquery destination
-  console.log(input);
+// $.get("/api/attendparty").then((response) => {
+//   console.log(response);
+//   //displayHtml(response);
+// });
 
+// $.get("/api/allparties").then((response) => displayHtml(response, "avail"));
+
+function displayHtml(input) {
   for (var i = 0; i < input.length; i++) {
     const displayhtml = `<li class="list-group-item" data-id="${input[i].id}">${input[i].title}
 
@@ -49,6 +52,19 @@ function displayHtml(input) {
 	</div>
 		`;
 
-    $(".userEvents").append(displayhtml);
+    $(".userEvents").append(displayHtml);
   }
 }
+
+//   switch (target) {
+//     case "host":
+//       $(".userEvents").append(displayhtml);
+//       break;
+//     case "attend":
+//       $(".attendEvents").append(displayHtml);
+//       break;
+//     case "avail":
+//       $(".allEvents-list").append(displayHtml);
+//       break;
+//   }
+// }

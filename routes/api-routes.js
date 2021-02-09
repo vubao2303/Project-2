@@ -85,15 +85,27 @@ module.exports = function (app) {
   });
 
   // Create find parties route
-  app.get("/api/findparties"),
+  app.get("/api/attendparty"),
     function (req, res) {
-      db.Party.findAll({}).then(function (dbParty) {
-        res.json(dbParty);
+      db.UserParty.findAll({
+        where: {
+          UserId: req.user.id,
+        },
+        include: {
+          model: db.Party,
+          include: {
+            model: db.User,
+            as: "host",
+            attributes: ["name"],
+          },
+        },
+      }).then(function (dbUserParty) {
+        res.json(dbUserParty);
       });
     };
 
   // Route to present parties on userdashboard
-  app.get("/api/userdashboard"),
+  app.get("/api/allparties"),
     function (req, res) {
       db.Party.findAll({});
     };
@@ -104,3 +116,5 @@ module.exports = function (app) {
 //     req.logout();
 //     res.redirect("/");
 //   });
+
+//
