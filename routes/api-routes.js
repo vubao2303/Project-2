@@ -51,8 +51,8 @@ module.exports = function (app) {
       },
     }).then((data) => {
       res.json(data);
-    }
-  )});
+    });
+  });
 
   app.get("/logout", function (req, res) {
     req.logout();
@@ -111,6 +111,37 @@ module.exports = function (app) {
     function (req, res) {
       db.Party.findAll({});
     };
+
+  //Delete a party
+  app.delete("/api/hostedparty", (req, res) => {
+    db.Party.destroy({
+      where: {
+        hostId: req.user.id,
+      },
+    })
+      .then(() => {
+        res.send(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(false);
+      });
+  });
+
+  app.delete("/api/hostedparty/:id", (req, res) => {
+    db.Party.destroy({
+      where: {
+        id: req.params.id,
+      },
+    })
+      .then(() => {
+        res.send(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(false);
+      });
+  });
 };
 
 // Route for logging user out
