@@ -1,7 +1,9 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
-// const { regexp } = require("sequelize/types/lib/operators");
+// Sequelize Operator
+var { Op } = require("sequelize");
+
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -9,6 +11,11 @@ module.exports = function (app) {
   // Otherwise the user will be sent an error
   app.post("/api/signin", passport.authenticate("local"), function (req, res) {
     res.json(req.user);
+  });
+
+  app.get("/logout", function (req, res) {
+    req.logout();
+    res.redirect("/");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -52,21 +59,14 @@ module.exports = function (app) {
     }).then((data) => {
       res.json(data);
     });
+
   });
 
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
+
   });
-  // Create route to attend a new party ; PUT request
-  app.put("/api/attend/:id"),
-    function (req, res) {
-      db.User.update({
-        where: {
-          id: req.params.id,
-        },
-      });
-    };
 
   // Create a new party
   app.post("/api/newparty", function (req, res) {
@@ -86,33 +86,57 @@ module.exports = function (app) {
     // })
   });
 
-  // Create find parties route
-  app.get("/api/attendparty"),
-    function (req, res) {
-      db.UserParty.findAll({
-        where: {
-          UserId: req.user.id,
+  // route used to get all events
+  app.get("/api/availableparty", (req, res) => {
+    // search Event table for all events
+    console.log("made it to events");
+    db.Party.findAll({
+      // join User since it contains the host's name
+      where: {
+        hostId: {
+          [Op.not]: req.user.id,
         },
-        include: {
-          model: db.Party,
-          include: {
-            model: db.User,
-            as: "host",
-            attributes: ["name"],
-          },
+      },
+      include: [
+        {
+          model: db.User,
+          as: "host",
+          attributes: ["name"],
         },
-      }).then(function (dbUserParty) {
-        res.json(dbUserParty);
+      ],
+    })
+      .then((events) => {
+        res.json(events);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(false);
       });
-    };
+  });
+  // Attend party route
+  app.get("/api/attendingparties", function (req, res) {
+    console.log("Made it to attend party");
+    db.UserParty.findAll({
+      where: {
+        UserId: req.user.id,
+      },
+      include: {
+        model: db.Party,
+      },
+    }).then(function (dbUserParty) {
+      res.json(dbUserParty);
+    });
+  });
 
-  // Route to present parties on userdashboard
-  app.get("/api/allparties"),
-    function (req, res) {
-      db.Party.findAll({});
-    };
+  app.post("/api/addattendee/:id", function (req, res) {
+    db.UserParty.create({
+      PartyId: req.param.id,
+      UserId: req.user.id,
+    }).then(function () {
+      res.send(200);
+    });
+  });
 
-  //Delete a party
   app.delete("/api/hostedparty", (req, res) => {
     db.Party.destroy({
       where: {
@@ -127,27 +151,15 @@ module.exports = function (app) {
         res.send(false);
       });
   });
-
-  app.delete("/api/hostedparty/:id", (req, res) => {
-    db.Party.destroy({
+  
+  app.delete("/api/unattend/:id", function (req, res) {
+    db.UserParty.destroy({
       where: {
-        id: req.params.id,
+        [Op.and]: [{ PartyId: req.param.id }, { UserId: req.user.id }],
       },
-    })
-      .then(() => {
-        res.send(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        res.send(false);
-      });
+    }).then(function () {
+      res.send(200);
+    });
   });
+
 };
-
-// Route for logging user out
-//   app.get("/logout", function(req, res) {
-//     req.logout();
-//     res.redirect("/");
-//   });
-
-//

@@ -12,17 +12,34 @@ $(document).ready(function () {
     });
   });
 
+  $(document).on("click", ".attend-btn", function (e) {
+    id = e.target.id;
+    $.get("/api/addattendee/:" + id).then(() => {
+      window.reload();
+    });
+  });
+
+  $(document).on("click", "PLACEHOLDER", function (e) {
+    id = e.target.id;
+    $.get("/api/unattend/:" + id).then(() => {
+      window.reload();
+    });
+  });
+
   $.get("/api/hostedparty").then((response) => {
     displayHtml(response, "host");
   });
+
+  $.get("/api/attendingparties").then((response) => {
+    displayHtml(response, "attend");
+  });
+
+  $.get("/api/availableparty").then((response) => {
+    displayHtml(response, "avail");
+
+  });
 });
 
-// $.get("/api/attendparty").then((response) => {
-//   console.log(response);
-//   //displayHtml(response);
-// });
-
-// $.get("/api/allparties").then((response) => displayHtml(response, "avail"));
 
 function displayHtml(input, target) {
   for (var i = 0; i < input.length; i++) {
@@ -50,7 +67,7 @@ function displayHtml(input, target) {
 		</div>
 	</div>
 		`;
-
+    
     $(document).on("click", ".li-btn-delete", (e) => {
       console.log(e.target.id);
       console.log($(this));
@@ -65,6 +82,7 @@ function displayHtml(input, target) {
       });
     });
 
+
     switch (target) {
       case "host":
         console.log("Made it to host case");
@@ -72,9 +90,11 @@ function displayHtml(input, target) {
 
         break;
       case "attend":
+        console.log("Made it to attend case");
         $(".attendEvents").append(html);
         break;
       case "avail":
+        console.log("Made it to avail case");
         $(".allEvents-list").append(html);
         break;
     }
