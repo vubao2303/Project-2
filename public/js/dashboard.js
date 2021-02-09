@@ -43,7 +43,7 @@ $(document).ready(function () {
 
 function displayHtml(input, target) {
   for (var i = 0; i < input.length; i++) {
-    var html = `<li class="list-group-item" data-id="${input[i].id}">${input[i].title}
+    var html = `<li class="list-group-item" data-id=${input[i].id}>${input[i].title}
 
 	<button
 		class="li-btn"
@@ -63,15 +63,31 @@ function displayHtml(input, target) {
 			<span>Time: ${input[i].time}</span>
 			<span>Location: ${input[i].location}</span>
 			<hr />
-			<span><button class="li-btn-delete">Delete</button></span>
+			<span><button id=${input[i].id} class="li-btn-delete" data-id=${input[i].id}>Delete</button></span>
 		</div>
 	</div>
 		`;
+    
+    $(document).on("click", ".li-btn-delete", (e) => {
+      console.log(e.target.id);
+      console.log($(this));
+      var id = e.target.id;
+      console.log(id);
+      $.ajax({
+        url: "/api/hostedparty/" + id,
+        method: "DELETE",
+      }).then(() => {
+        console.log("Deleted");
+        window.location.reload();
+      });
+    });
+
 
     switch (target) {
       case "host":
         console.log("Made it to host case");
         $(".userEvents").append(html);
+
         break;
       case "attend":
         console.log("Made it to attend case");
@@ -84,3 +100,5 @@ function displayHtml(input, target) {
     }
   }
 }
+
+// $(document).on("ready", displayHtml);

@@ -59,6 +59,13 @@ module.exports = function (app) {
     }).then((data) => {
       res.json(data);
     });
+
+  });
+
+  app.get("/logout", function (req, res) {
+    req.logout();
+    res.redirect("/");
+
   });
 
   // Create a new party
@@ -130,6 +137,21 @@ module.exports = function (app) {
     });
   });
 
+  app.delete("/api/hostedparty", (req, res) => {
+    db.Party.destroy({
+      where: {
+        hostId: req.user.id,
+      },
+    })
+      .then(() => {
+        res.send(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(false);
+      });
+  });
+  
   app.delete("/api/unattend/:id", function (req, res) {
     db.UserParty.destroy({
       where: {
