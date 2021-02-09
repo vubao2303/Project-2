@@ -16,9 +16,10 @@ $(document).ready(function () {
     displayHtml(response, "host");
   });
 
-  //   $.get("/api/attendparty").then((response) => {
-  //     console.log(response, "attend");
-  // });
+  $.get("/api/attendparty").then((response) => {
+    console.log(response, "attend");
+  });
+
   $.get("/api/event").then((response) => {
     displayHtml(response, "avail");
 

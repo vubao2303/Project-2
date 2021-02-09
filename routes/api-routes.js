@@ -12,6 +12,12 @@ module.exports = function (app) {
     res.json(req.user);
   });
 
+  
+  app.get("/logout", function (req, res) {
+    req.logout();
+    res.redirect("/");
+  });
+
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
@@ -55,19 +61,6 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect("/");
-  });
-  // Create route to attend a new party ; PUT request
-  app.put("/api/attend/:id"),
-    function (req, res) {
-      db.User.update({
-        where: {
-          id: req.params.id,
-        },
-      });
-    };
 
   // Create a new party
   app.post("/api/newparty", function (req, res) {
@@ -115,38 +108,24 @@ module.exports = function (app) {
       });
   });
 
-  // // Create find parties route
-  // app.get("/api/attendparty"),
-  //   function (req, res) {
-  //     console.log("Made it to attend party")
-  //     db.UserParty.findAll({
-  //       where: {
-  //         UserId: req.user.id,
-  //       },
-  //       include: {
-  //         model: db.Party,
-  //         include: {
-  //           model: db.User,
-  //           as: "host",
-  //           attributes: ["name"]
-  //         }
-  //       }
-  //     }).then(function (dbUserParty) {
-  //       res.json(dbUserParty);
-  //     });
-  //   };
-
-  // Route to present parties on userdashboard
-  app.get("/api/allparties"),
+  // Create find parties route
+  app.get("/api/attendparty",
     function (req, res) {
-      db.Party.findAll({});
-    };
-};
-
-// Route for logging user out
-//   app.get("/logout", function(req, res) {
-//     req.logout();
-//     res.redirect("/");
-//   });
-
-//
+      console.log("Made it to attend party");
+      db.UserParty.findAll({
+        where: {
+          UserId: req.user.id,
+        },
+        include: {
+          model: db.Party,
+          include: {
+            model: db.User,
+            as: "host",
+            attributes: ["name"],
+          },
+        },
+      }).then(function (dbUserParty) {
+        res.json(dbUserParty);
+      });
+    });
+}
