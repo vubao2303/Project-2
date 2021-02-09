@@ -49,8 +49,10 @@ module.exports = function (app) {
       where: {
         hostId: req.user.id,
       },
-    }).then((data) => res.json(data));
-  });
+    }).then((data) => {
+      res.json(data);
+    }
+  )});
 
   app.get("/logout", function (req, res) {
     req.logout();

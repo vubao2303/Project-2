@@ -13,8 +13,7 @@ $(document).ready(function () {
   });
 
   $.get("/api/hostedparty").then((response) => {
-    console.log(response);
-    displayHtml(response);
+    displayHtml(response, "host");
   });
 });
 
@@ -25,9 +24,9 @@ $(document).ready(function () {
 
 // $.get("/api/allparties").then((response) => displayHtml(response, "avail"));
 
-function displayHtml(input) {
+function displayHtml(input, target) {
   for (var i = 0; i < input.length; i++) {
-    const displayhtml = `<li class="list-group-item" data-id="${input[i].id}">${input[i].title}
+    var html = `<li class="list-group-item" data-id="${input[i].id}">${input[i].title}
 
 	<button
 		class="li-btn"
@@ -51,20 +50,18 @@ function displayHtml(input) {
 		</div>
 	</div>
 		`;
-
-    $(".userEvents").append(displayHtml);
+    
+    switch (target) {
+      case "host":
+        console.log("Made it to host case");
+        $(".userEvents").append(html);
+        break;
+      case "attend":
+        $(".attendEvents").append(html);
+        break;
+      case "avail":
+        $(".allEvents-list").append(html);
+        break;
+    }
   }
 }
-
-//   switch (target) {
-//     case "host":
-//       $(".userEvents").append(displayhtml);
-//       break;
-//     case "attend":
-//       $(".attendEvents").append(displayHtml);
-//       break;
-//     case "avail":
-//       $(".allEvents-list").append(displayHtml);
-//       break;
-//   }
-// }
