@@ -19,6 +19,13 @@ $(document).ready(function () {
     });
   });
 
+  $(document).on("click", "PLACEHOLDER", function (e) {
+    id = e.target.id;
+    $.get("/api/unattend/:" + id).then(() => {
+      window.reload();
+    });
+  });
+
   $.get("/api/hostedparty").then((response) => {
     displayHtml(response, "host");
   });
@@ -30,10 +37,9 @@ $(document).ready(function () {
   $.get("/api/availableparty").then((response) => {
     displayHtml(response, "avail");
 
-    //displayHtml(response);
   });
 });
-// $.get("/api/allparties").then((response) => displayHtml(response, "avail"));
+
 
 function displayHtml(input, target) {
   for (var i = 0; i < input.length; i++) {

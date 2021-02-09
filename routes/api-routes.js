@@ -1,8 +1,9 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+// Sequelize Operator
 var { Op } = require("sequelize");
-// const { regexp } = require("sequelize/types/lib/operators");
+
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -114,11 +115,6 @@ module.exports = function (app) {
       },
       include: {
         model: db.Party,
-        // include: {
-        //   model: db.User,
-        //   as: "host",
-        //   attributes: ["name"],
-        // },
       },
     }).then(function (dbUserParty) {
       res.json(dbUserParty);
@@ -127,10 +123,21 @@ module.exports = function (app) {
 
   app.post("/api/addattendee/:id", function (req, res) {
     db.UserParty.create({
-      PartyId : req.param.id,
-       UserId : req.user.id 
-    }).then(function (){
+      PartyId: req.param.id,
+      UserId: req.user.id,
+    }).then(function () {
       res.send(200);
     });
   });
+
+  app.delete("/api/unattend/:id", function (req, res) {
+    db.UserParty.destroy({
+      where: {
+        [Op.and]: [{ PartyId: req.param.id }, { UserId: req.user.id }],
+      },
+    }).then(function () {
+      res.send(200);
+    });
+  });
+
 };
