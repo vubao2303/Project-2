@@ -52,7 +52,3 @@ function displayHtml(input) {
     $(".userEvents").append(displayhtml);
   }
 }
-
-// parties.forEach((party) => $(".userEvents").append(displayhtml));
-
-// I have to change something
