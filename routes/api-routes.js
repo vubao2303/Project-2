@@ -45,8 +45,12 @@ module.exports = function (app) {
   });
 
   app.get("/api/hostedparty", (req, res) => {
+    console.log(req.user);
     db.Party.findAll({
-      where: (hostId = req.body.user_id),
+      logging: console.log(),
+      where: {
+        hostId: req.user.id,
+      },
     }).then((data) => res.json(data));
   });
 

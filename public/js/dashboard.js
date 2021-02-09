@@ -5,6 +5,9 @@ $(document).ready(function () {
     currentUserId = data.id;
     console.log(currentUserId);
   });
+  // .then(() => {
+
+  // });
 
   //Create new party
   $("#createPartyBtn").on("click", function () {
@@ -19,15 +22,13 @@ $(document).ready(function () {
       window.location.reload();
     });
   });
-
-  // $.get("/api/hostedparty", {
-  //   user_id: currentUserId,
-  // }).then((response) => {
-  //   console.log(response);
-  //   displayHtml(response);
-  // });
+  $.get("/api/hostedparty", {
+    user_id: currentUserId,
+  }).then((response) => {
+    console.log(response);
+    //displayHtml(response);
+  });
 });
-
 
 function displayHtml(input) {
   //todo get array of objects that represent this users hosted party
@@ -67,10 +68,3 @@ function displayHtml(input) {
 // parties.forEach((party) => $(".userEvents").append(displayhtml));
 
 //
-
-// $.post("/api/newparty", {
-//   user_id: currentUserId,
-// }).then((response) => {
-//   console.log(response);
-// });
-
