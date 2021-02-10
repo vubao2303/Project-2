@@ -22,7 +22,7 @@ $(document).ready(function () {
   $(document).on("click", "PLACEHOLDER", function (e) {
     id = e.target.id;
     $.get("/api/unattend/" + id).then(() => {
-      window.location.reload()
+      window.location.reload();
     });
   });
 
@@ -38,12 +38,11 @@ $(document).ready(function () {
     allParties(response);
   });
 
-  // get the user email/ or name clientside 
-  $.get("/api/user_data").then(function(data) {
+  // get the user email/ or name clientside
+  $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.name);
   });
 });
-
 function hostedHtml(input) {
   console.log(input);
   for (var i = 0; i < input.length; i++) {
@@ -53,14 +52,14 @@ function hostedHtml(input) {
 		class="li-btn"
 		type="button"
 		data-toggle="collapse"
-		data-target="#${input[i].theme}"
+		data-target="#${input[i].id}"
 		aria-expanded="false"
 		aria-controls="inputInfo-hosted">
 		View Info
 	</button>
 </li>
 
-	<div class="collapse" id="${input[i].theme}">
+	<div class="collapse" id="${input[i].id}">
 		<div class="card card-body dropdown">
 			<span>Theme: ${input[i].theme}</span>
 			<span>Date: ${input[i].date}</span>
@@ -168,4 +167,3 @@ function upcomingParties(input) {
     });
   }
 }
-
