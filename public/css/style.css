@@ -11,7 +11,7 @@
 }
 .index-body {
   background-image: url(cloud.jpeg);
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
 }
 
 /** Removing base link styling
@@ -100,8 +100,8 @@ a:active {
 }
 
 .li-btn {
-  background-color:wheat;
-  color:black;
+  background-color: wheat;
+  color: black;
   margin-left: 10px;
   border-radius: 5px;
   border: none;
@@ -109,7 +109,7 @@ a:active {
 }
 
 .li-btn-delete {
-  background-color:salmon;
+  background-color: salmon;
   color: white;
   border: none;
   border-radius: 5px;
@@ -191,10 +191,9 @@ html {
   padding: 1em;
 }
 
-.create-btn
-{
-  background-color:gray;
-  color:black;
+.create-btn {
+  background-color: gray;
+  color: black;
   font-weight: bold;
 }
 
@@ -209,30 +208,30 @@ html {
 }
 
 .fa:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 .fa-linkedin {
   background: #007bb5;
   color: white;
 }
 
-.big-pad{
+.big-pad {
   background-image: url(soap.png);
 }
-.dropdown{
+.dropdown {
   background-image: url(simple.jpeg);
   border-radius: 25px;
-  background-position: left top;;
+  background-position: left top;
 }
 
-.member-name,.card-title {
+.member-name,
+.card-title {
   font-family: "Sofia", sans-serif;
   font-weight: bolder;
 }
 /* style cards */
 
-
-#createEvent{
+#createEvent {
   background-image: url(soap.png);
   border-radius: 25px;
   background-position: left top;
@@ -247,11 +246,11 @@ html {
   background-image: url(pn2.png);
 }
 
-.card-title{
+.card-title {
   color: wheat;
 }
 
-#allEvents{
+#allEvents {
   border-radius: 25px;
   background-image: url(pn2.png);
   background-position: left top;
@@ -259,4 +258,16 @@ html {
   /* padding: 20px;
   width: 200px;
   height: 150px; */
+}
+
+#userLogin-btn,
+#userCreate-btn {
+  background: #76cfe1;
+  margin: 0px 20px;
+  padding: 15px 30px;
+}
+
+.signup,
+.signin {
+  background: #62fed2;
 }
