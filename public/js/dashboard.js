@@ -14,15 +14,15 @@ $(document).ready(function () {
 
   $(document).on("click", ".attend-btn", function (e) {
     id = e.target.id;
-    $.get("/api/addattendee/:" + id).then(() => {
-      window.reload();
+    $.post("/api/addattendee/" + id).then(() => {
+      window.location.reload();
     });
   });
 
   $(document).on("click", "PLACEHOLDER", function (e) {
     id = e.target.id;
-    $.get("/api/unattend/:" + id).then(() => {
-      window.reload();
+    $.get("/api/unattend/" + id).then(() => {
+      window.location.reload()
     });
   });
 
@@ -31,11 +31,16 @@ $(document).ready(function () {
   });
 
   $.get("/api/attendingparties").then((response) => {
-    upcomingParties(response, "attend");
+    upcomingParties(response);
   });
 
   $.get("/api/availableparty").then((response) => {
-    allParties(response, "avail");
+    allParties(response);
+  });
+
+  // get the user email/ or name clientside 
+  $.get("/api/user_data").then(function(data) {
+    $(".member-name").text(data.name);
   });
 });
 
@@ -48,14 +53,14 @@ function hostedHtml(input) {
 		class="li-btn"
 		type="button"
 		data-toggle="collapse"
-		data-target="#inputInfo-hosted"
+		data-target="#${input[i].theme}"
 		aria-expanded="false"
 		aria-controls="inputInfo-hosted">
 		View Info
 	</button>
 </li>
 
-	<div class="collapse" id="inputInfo-hosted">
+	<div class="collapse" id="${input[i].theme}">
 		<div class="card card-body">
 			<span>Theme: ${input[i].theme}</span>
 			<span>Date: ${input[i].date}</span>
@@ -92,14 +97,14 @@ function allParties(input) {
     class="li-btn"
     data-id=""
     data-toggle="collapse"
-    data-target="#eventInfo-all"
+    data-target="#${input[i].theme}"
     >View Party</button>
   </li>
 
-  <div class="collapse" id="eventInfo-all">
+  <div class="collapse" id="${input[i].theme}">
     <div class="card card-body">
 
-      <p class="host-name">Host: $input[i].name}</p> 
+      <p class="host-name">Host:{$input[i].name}</p> 
 
 
       <p>Theme:${input[i].theme}</p>
@@ -118,20 +123,20 @@ function allParties(input) {
 function upcomingParties(input) {
   // console.log(input);
   for (var i = 0; i < input.length; i++) {
-    var html = `<li class="list-group-item" data-id=${input[i].id}>${input[i].title}
+    var html = `<li class="list-group-item" data-id=${input[i].id}> ${input[i].title}
 
 	<button
 		class="li-btn"
 		type="button"
 		data-toggle="collapse"
-		data-target="#inputInfo-hosted"
+		data-target="#${input[i].theme}"
 		aria-expanded="false"
 		aria-controls="inputInfo-hosted">
 		View Info
 	</button>
 </li>
 
-	<div class="collapse" id="inputInfo-hosted">
+	<div class="collapse" id="${input[i].theme}">
 		<div class="card card-body">
 
       <p class="host-name">Host: ${input[i].name}</p>
@@ -141,20 +146,20 @@ function upcomingParties(input) {
 			<span>Time: ${input[i].time}</span>
 			<span>Location: ${input[i].location}</span>
 			<hr />
-			<span><button id=${input[i].id} class="li-btn-delete" data-id=${input[i].id}>Delete</button></span>
+			<span><button id=${input[i].id} class="unAttend-btn li-btn" data-id=${input[i].id}>Unattend</button></span>
 		</div>
 	</div>
 		`;
 
-    $(".userEvents").append(html);
+    $(".attendEvents").append(html);
 
-    $(document).on("click", ".li-btn-delete", (e) => {
+    $(document).on("click", ".unAttend-btn", (e) => {
       console.log(e.target.id);
       console.log($(this));
       var id = e.target.id;
       console.log(id);
       $.ajax({
-        url: "/api/attendingparties/" + id,
+        url: "/api/unattend/" + id,
         method: "DELETE",
       }).then(() => {
         console.log("Deleted");
@@ -163,3 +168,4 @@ function upcomingParties(input) {
     });
   }
 }
+
