@@ -1,47 +1,34 @@
-# Project-2
+# Party-X
 
+Project description here
+* Full stack application deployed to Heroku
+* Team build requiring constant communication
+* Git tracked project in rapid development process
 
-description 
+![Demo Video]()
+Choose somewhere to store this gif: Root? Its own folder?  
 
-## Authors
+![Site Picture]()  
 
-* **B Tram Vu** 
-* **Coleman Buffa** 
-* **Ron-Arjay Caluag**
-* **Jaja Brown** 
+## Table of Contents 
 
-## Demo-video 
+| |||
+|:-:|:-:|:-:|
+|[Project Introduction](#party-x) | [Table of Contents](#table-of-contents)| [Development Highlights](development-highlights)
+|[Heroku](#heroku-deployed) | [Description of Page Building](#Description-of-Page-Building)| [Authors](#authors) 
+| [Technologies Used](#Technologies-Used) | [LinkedIn](#LinkedIn) | [License](#License)
 
-[Demo Video]()  
+---
 
-![Site Picture]()
+## Development Highlights
 
+* Project learning goals
+* Development process (user stories -> githib cards -> git branches -> commits)
+* MVC architecture
 
 ## Heroku-Deployed
 
-[Deployed Link]()  
-
-# Table of Contents 
-[Tittle](#Project-2)
-
-[Authors](#Authors)
-
-[Demo Video](#Demo-video )
-
-[Heroku](#Heroku-Deployed)
-
-[Table of Contents](#Table-of-Content)
-
-[Description of Page Building](#Description-of-Page-Building)
-
-[Code Snippet](#Code-Snippet)
-
-[Technologies Used](#Technologies-Used)
-
-[LinkedIn](#LinkedIn)
-
-[License](#License)
-
+[Deployed Link]()
 
 ## Description of Page Building 
 * In one file
@@ -72,8 +59,6 @@ description
 
 
 ## Code Snippet
-Install npm package 
-npm install express
 
 Required variables 
 ``` Javascript
@@ -96,26 +81,26 @@ do this because
 ```
 
 ## Technologies Used
-- Node - an open-source, cross-platform, back-end JavaScript runtime environment that executes JavaScript code outside a web browser.
-  * [Node.js](https://nodejs.org/dist/latest-v14.x/docs/api/)
-- Git - version control system to track changes to source code
-  * [Git](https://git-scm.com/)
-- GitHub - hosts repository that can be deployed to GitHub Pages
-  * [Github](https://github.com/)
-- Express - a Node js web application server framework, which is specifically designed for building single-page, multi-page, and hybrid web applications
-  * [Express](http://expressjs.com/en/api.html#express)
 
+||||||
+|:-:|:-:|:-:|:-:|:-:|
+|[HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) | [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) | [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) |[Node.js](https://nodejs.org/en/) |[MySQL Database](https://www.mysql.com/)
+|[Express](https://expressjs.com/) | [Express-Session](https://www.npmjs.com/package/express-session) |[Sequelize](https://sequelize.org/) |[bcrypt](https://www.npmjs.com/package/bcrypt) |[Passport](http://www.passportjs.org/)
+| [MySQL](https://www.mysql.com/) | [MySQL2](https://github.com/sidorares/node-mysql2#readme) | [Heroku](https://heroku.com/) | [GitHub](https://github.com/)
 
-## LinkedIn
+<br>
 
-* **B Tram Vu** 
-* **Coleman Buffa** 
-* **Ron-Arjay Caluag**
-* **Jaja Brown** 
+## Authors
 
+| | |
+| --- | --- |
+|**B Tram Vu**|[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/b-tram-vu-866250121/)  [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/vubao2303)
+|**Jaja Brown**|[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/jaja-brown-a42261201/) [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/jbrown827)
+|**Ron-Arjay Caluag**|[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/ron-arjay-caluag-00b29b182/) [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/ArjayCaluag)
+|**Coleman Buffa**|[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](hhttps://www.linkedin.com/in/coleman-buffa/) [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/coleman-buffa)
 
-- [Link to LinkedIn](https://www.linkedin.com/in/tram-vu-866250121/)
+---
 
 ## License
 
-© 2021 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
