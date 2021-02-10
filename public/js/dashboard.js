@@ -31,15 +31,13 @@ $(document).ready(function () {
   });
 
   $.get("/api/attendingparties").then((response) => {
-    displayHtml(response, "attend");
+    upcomingParties(response, "attend");
   });
 
   $.get("/api/availableparty").then((response) => {
-    displayHtml(response, "avail");
-
+    allParties(response, "avail");
   });
 });
-
 
 function hostedHtml(input) {
   console.log(input);
@@ -68,7 +66,6 @@ function hostedHtml(input) {
 		</div>
 	</div>
 		`;
-
 
     $(".userEvents").append(html);
 
@@ -110,12 +107,11 @@ function allParties(input) {
       <p>Date:${input[i].date}</p>
       <p>Time:${input[i].time}</p>
       <hr />
-      <button id=${input[i].id} class="attend-btn" data-id=${input[i].id}>Attend Party</button>
+      <button id=${input[i].id} class="attend-btn li-btn" data-id=${input[i].id}>Attend Party</button>
     </div>
   </div>`;
 
     $(".allEvents-list").append(html);
-
   }
 }
 
@@ -158,7 +154,7 @@ function upcomingParties(input) {
       var id = e.target.id;
       console.log(id);
       $.ajax({
-        url: "/api/hostedparty/" + id,
+        url: "/api/attendingparties/" + id,
         method: "DELETE",
       }).then(() => {
         console.log("Deleted");
