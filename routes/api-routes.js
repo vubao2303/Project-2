@@ -110,12 +110,14 @@ module.exports = function (app) {
         res.send(false);
       });
   });
-  // Attend party route
+  // Attend party route, list all the party user is atee
   app.get("/api/attendingparties", function (req, res) {
     console.log("Made it to attend party");
     db.UserParty.findAll({
       where: {
         UserId: req.user.id,
+        // // Btrying
+        // UserId: req.params.id
       },
       include: {
         model: db.Party,
@@ -163,7 +165,7 @@ module.exports = function (app) {
   app.delete("/api/unattend/:id", function (req, res) {
     db.UserParty.destroy({
       where: {
-        [Op.and]: [{ PartyId: req.param.id }, { UserId: req.user.id }],
+        [Op.and]: [{ PartyId: req.params.id }, { UserId: req.user.id }],
       },
     }).then(function () {
       res.send(200);
