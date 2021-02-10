@@ -14,16 +14,15 @@ $(document).ready(function () {
 
   $(document).on("click", ".attend-btn", function (e) {
     id = e.target.id;
-    console.log(id);
-    $.post("/api/addattendee/" + id).then(() => {
-      window.location.reload();
+    $.get("/api/addattendee/:" + id).then(() => {
+      window.reload();
     });
   });
 
   $(document).on("click", "PLACEHOLDER", function (e) {
     id = e.target.id;
-    $.get("/api/unattend/" + id).then(() => {
-      window.location.reload();
+    $.get("/api/unattend/:" + id).then(() => {
+      window.reload();
     });
   });
 
@@ -32,11 +31,11 @@ $(document).ready(function () {
   });
 
   $.get("/api/attendingparties").then((response) => {
-    upcomingParties(response);
+    upcomingParties(response, "attend");
   });
 
   $.get("/api/availableparty").then((response) => {
-    allParties(response);
+    allParties(response, "avail");
   });
 });
 
@@ -78,9 +77,14 @@ function hostedHtml(input) {
       $.ajax({
         url: "/api/hostedparty/" + id,
         method: "DELETE",
-      }).then(() => {
-        console.log("Deleted");
+      }).then(function () {
         window.location.reload();
+        console.log("eeehh")
+        // If there's an error, log the error
+      })
+      .catch(function (err) {
+        alert(`ok`);
+        console.log(err);
       });
     });
   }
@@ -100,7 +104,7 @@ function allParties(input) {
   <div class="collapse" id="eventInfo-all">
     <div class="card card-body">
 
-      <p class="host-name">Host: ${input[i].name}</p> 
+      <p class="host-name">Host: $input[i].name}</p> 
 
 
       <p>Theme:${input[i].theme}</p>
@@ -119,7 +123,7 @@ function allParties(input) {
 function upcomingParties(input) {
   // console.log(input);
   for (var i = 0; i < input.length; i++) {
-    var html = `<li class="list-group-item" data-id=${input[i].id}> ${input[i].title}
+    var html = `<li class="list-group-item" data-id=${input[i].id}>${input[i].title}
 
 	<button
 		class="li-btn"
@@ -147,7 +151,7 @@ function upcomingParties(input) {
 	</div>
 		`;
 
-    $(".attendEvents").append(html);
+    $(".userEvents").append(html);
 
     $(document).on("click", ".li-btn-delete", (e) => {
       console.log(e.target.id);
