@@ -52,14 +52,14 @@ function hostedHtml(input) {
 		class="li-btn"
 		type="button"
 		data-toggle="collapse"
-		data-target="#${input[i].id}"
+		data-target="#hosted-${input[i].id}"
 		aria-expanded="false"
 		aria-controls="inputInfo-hosted">
 		View Info
 	</button>
 </li>
 
-	<div class="collapse" id="${input[i].id}">
+	<div class="collapse" id="hosted-${input[i].id}">
 		<div class="card card-body dropdown">
 			<span>Theme: ${input[i].theme}</span>
 			<span>Date: ${input[i].date}</span>
@@ -94,13 +94,15 @@ function allParties(input) {
     var html = `<li class="list-group-item">${input[i].title}
   <button
     class="li-btn"
-    data-id=""
+    type="button"
     data-toggle="collapse"
-    data-target="#${input[i].theme}"
+    data-target="#all-${input[i].id}"
+    aria-expanded="false"
+    aria-controls="inputInfo-allParties"
     >View Party</button>
   </li>
 
-  <div class="collapse" id="${input[i].theme}">
+  <div class="collapse" id="all-${input[i].id}">
     <div class="card card-body dropdown">
 
       <p class="host-name">Host:{$input[i].name}</p> 
@@ -128,14 +130,14 @@ function upcomingParties(input) {
 		class="li-btn"
 		type="button"
 		data-toggle="collapse"
-		data-target="#${input[i].theme}"
+		data-target="#upcoming-${input[i].id}"
 		aria-expanded="false"
 		aria-controls="inputInfo-hosted">
 		View Info
 	</button>
 </li>
 
-	<div class="collapse" id="${input[i].theme}">
+	<div class="collapse" id="upcoming-${input[i].id}">
 		<div class="card card-body dropdown">
 
       <p class="host-name">Host: ${input[i].name}</p>
@@ -167,3 +169,5 @@ function upcomingParties(input) {
     });
   }
 }
+
+// who has the id of random
