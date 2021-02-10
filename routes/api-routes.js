@@ -4,7 +4,6 @@ var passport = require("../config/passport");
 // Sequelize Operator
 var { Op } = require("sequelize");
 
-
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -59,13 +58,11 @@ module.exports = function (app) {
     }).then((data) => {
       res.json(data);
     });
-
   });
 
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
-
   });
 
   // Create a new party
@@ -137,10 +134,10 @@ module.exports = function (app) {
     });
   });
 
-  app.delete("/api/hostedparty", (req, res) => {
+  app.delete("/api/hostedparty/:id", (req, res) => {
     db.Party.destroy({
       where: {
-        hostId: req.user.id,
+        id: req.params.id,
       },
     })
       .then(() => {
@@ -151,7 +148,7 @@ module.exports = function (app) {
         res.send(false);
       });
   });
-  
+
   app.delete("/api/unattend/:id", function (req, res) {
     db.UserParty.destroy({
       where: {
@@ -161,5 +158,4 @@ module.exports = function (app) {
       res.send(200);
     });
   });
-
 };
