@@ -119,18 +119,29 @@ module.exports = function (app) {
       },
       include: {
         model: db.Party,
+        include: {
+          model: db.User,
+          as: "host",
+          attributes: ["name"],
+        },
       },
     }).then(function (dbUserParty) {
-      res.json(dbUserParty);
+      console.log("User Party xxxxxxxxx" + dbUserParty);
+      let data = [];
+      dbUserParty.forEach((user) => {
+        data.push(user.Party);
+      });
+      res.json(data);
     });
   });
 
   app.post("/api/addattendee/:id", function (req, res) {
     db.UserParty.create({
-      PartyId: req.param.id,
+      PartyId: req.params.id,
       UserId: req.user.id,
-    }).then(function () {
-      res.send(200);
+    }).then(function (data) {
+      console.log(data);
+      res.json(data);
     });
   });
 
