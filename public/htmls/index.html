@@ -12,14 +12,17 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/style.css" />
 
     <title>Party-X</title>
   </head>
 
-  <body class= "index-body">
+  <body class="index-body">
     <!-- Main Nav -->
     <nav class="navbar navbar-expand-lg py-3 px-4 auto-hiding-navbar">
       <h2 class="mr-auto member-name"> </h2>
@@ -135,31 +138,39 @@
                     placeholder=""
                   />
                 </div>
+                <div class="form-group col-md-12">
+                  <label for="eventLoc">Location</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="eventLoc"
+                    placeholder="Event location"
+                  />
+                </div>
               </div>
-              <div class="form-group">
-                <label for="eventLoc">Location</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="eventLoc"
-                  placeholder="Event location"
-                />
-              </div>
-              <div class="form-group col-md-6">
-                <label for="eventDate">Date</label>
-                <input type="date" class="form-control" id="eventDate" />
-              </div>
-              <div class="form-group col-md-6">
-                <label for="eventTime">Time</label>
-                <input type="time" class="form-control" id="eventTime" />
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="eventDate">Date</label>
+                  <input type="date" class="form-control" id="eventDate" />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="eventTime">Time</label>
+                  <input type="time" class="form-control" id="eventTime" />
+                </div>
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            <button
+              type="button"
+              class="btn modal-close-btn"
+              data-dismiss="modal"
               >Close</button
             >
-            <button type="submit" id="createPartyBtn" class="btn btn-primary"
+            <button
+              type="submit"
+              id="createPartyBtn"
+              class="btn modal-submit-btn"
               >Submit</button
             >
           </div>
@@ -179,6 +190,9 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Moment -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
     <!-- Custom JavaScript -->
     <script src="./js/dashboard.js"></script>
   </body>

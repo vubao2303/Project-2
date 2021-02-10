@@ -22,7 +22,7 @@ $(document).ready(function () {
   $(document).on("click", "PLACEHOLDER", function (e) {
     id = e.target.id;
     $.get("/api/unattend/" + id).then(() => {
-      window.location.reload()
+      window.location.reload();
     });
   });
 
@@ -38,36 +38,39 @@ $(document).ready(function () {
     allParties(response);
   });
 
-  // get the user email/ or name clientside 
-  $.get("/api/user_data").then(function(data) {
+  // get the user email/ or name clientside
+  $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.name);
   });
 });
-
 function hostedHtml(input) {
   console.log(input);
   for (var i = 0; i < input.length; i++) {
-    var html = `<li class="list-group-item" data-id=${input[i].id}>${input[i].title}
+    var html = `<li class="list-group-item" data-id=${input[i].id}>${
+      input[i].title
+    }
 
 	<button
 		class="li-btn"
 		type="button"
 		data-toggle="collapse"
-		data-target="#${input[i].theme}"
+		data-target="#hosted-${input[i].id}"
 		aria-expanded="false"
 		aria-controls="inputInfo-hosted">
 		View Info
 	</button>
 </li>
 
-	<div class="collapse" id="${input[i].theme}">
+	<div class="collapse" id="hosted-${input[i].id}">
 		<div class="card card-body dropdown">
 			<span>Theme: ${input[i].theme}</span>
-			<span>Date: ${input[i].date}</span>
-			<span>Time: ${input[i].time}</span>
+			<span>Date: ${moment(input[i].date).format("dddd, MMMM Do YYYY")}</span>
+			<span>Time: ${moment(input[i].time).format()}</span>
 			<span>Location: ${input[i].location}</span>
 			<hr />
-			<span><button id=${input[i].id} class="li-btn-delete" data-id=${input[i].id}>Delete</button></span>
+			<span><button id=${input[i].id} class="li-btn-delete" data-id=${
+      input[i].id
+    }>Delete</button></span>
 		</div>
 	</div>
 		`;
@@ -95,24 +98,28 @@ function allParties(input) {
     var html = `<li class="list-group-item">${input[i].title}
   <button
     class="li-btn"
-    data-id=""
+    type="button"
     data-toggle="collapse"
-    data-target="#${input[i].theme}"
+    data-target="#all-${input[i].id}"
+    aria-expanded="false"
+    aria-controls="inputInfo-allParties"
     >View Party</button>
   </li>
 
-  <div class="collapse" id="${input[i].theme}">
+  <div class="collapse" id="all-${input[i].id}">
     <div class="card card-body dropdown">
 
-      <p class="host-name">Host:{$input[i].name}</p> 
+      <!-- <p class="host-name">Host:{$input[i].name}</p> -->
 
 
-      <p>Theme:${input[i].theme}</p>
-      <p>Location:${input[i].location}</p>
-      <p>Date:${input[i].date}</p>
-      <p>Time:${input[i].time}</p>
+      <p>Theme: ${input[i].theme}</p>
+      <p>Location: ${input[i].location}</p>
+      <p>Date: ${moment(input[i].date).format("dddd, MMMM Do YYYY")}</p>
+      <p>Time: ${input[i].time}</p>
       <hr />
-      <button id=${input[i].id} class="attend-btn li-btn" data-id=${input[i].id}>Attend Party</button>
+      <button id=${input[i].id} class="attend-btn li-btn" data-id=${
+      input[i].id
+    }>Attend Party</button>
     </div>
   </div>`;
 
@@ -123,30 +130,34 @@ function allParties(input) {
 function upcomingParties(input) {
   // console.log(input);
   for (var i = 0; i < input.length; i++) {
-    var html = `<li class="list-group-item" data-id=${input[i].id}> ${input[i].title}
+    var html = `<li class="list-group-item" data-id=${input[i].id}> ${
+      input[i].title
+    }
 
 	<button
 		class="li-btn"
 		type="button"
 		data-toggle="collapse"
-		data-target="#${input[i].theme}"
+		data-target="#upcoming-${input[i].id}"
 		aria-expanded="false"
 		aria-controls="inputInfo-hosted">
 		View Info
 	</button>
 </li>
 
-	<div class="collapse" id="${input[i].theme}">
+	<div class="collapse" id="upcoming-${input[i].id}">
 		<div class="card card-body dropdown">
 
-      <p class="host-name">Host: ${input[i].name}</p>
+      <!-- <p class="host-name">Host: ${input[i].name}</p> -->
 
 			<span>Theme: ${input[i].theme}</span>
-			<span>Date: ${input[i].date}</span>
+			<span>Date: ${moment(input[i].date).format("dddd, MMMM Do YYYY")}</span>
 			<span>Time: ${input[i].time}</span>
 			<span>Location: ${input[i].location}</span>
 			<hr />
-			<span><button id=${input[i].id} class="unAttend-btn li-btn" data-id=${input[i].id}>Unattend</button></span>
+			<span><button id=${input[i].id} class="unAttend-btn li-btn" data-id=${
+      input[i].id
+    }>Unattend</button></span>
 		</div>
 	</div>
 		`;
@@ -169,3 +180,4 @@ function upcomingParties(input) {
   }
 }
 
+// who has the id of random
