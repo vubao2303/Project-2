@@ -14,15 +14,16 @@ $(document).ready(function () {
 
   $(document).on("click", ".attend-btn", function (e) {
     id = e.target.id;
-    $.get("/api/addattendee/:" + id).then(() => {
-      window.reload();
+    console.log(id);
+    $.post("/api/addattendee/" + id).then(() => {
+      window.location.reload();
     });
   });
 
   $(document).on("click", "PLACEHOLDER", function (e) {
     id = e.target.id;
-    $.get("/api/unattend/:" + id).then(() => {
-      window.reload();
+    $.get("/api/unattend/" + id).then(() => {
+      window.location.reload();
     });
   });
 
@@ -31,11 +32,11 @@ $(document).ready(function () {
   });
 
   $.get("/api/attendingparties").then((response) => {
-    upcomingParties(response, "attend");
+    upcomingParties(response);
   });
 
   $.get("/api/availableparty").then((response) => {
-    allParties(response, "avail");
+    allParties(response);
   });
 });
 
@@ -99,7 +100,7 @@ function allParties(input) {
   <div class="collapse" id="eventInfo-all">
     <div class="card card-body">
 
-      <p class="host-name">Host: $input[i].name}</p> 
+      <p class="host-name">Host: ${input[i].name}</p> 
 
 
       <p>Theme:${input[i].theme}</p>
@@ -118,7 +119,7 @@ function allParties(input) {
 function upcomingParties(input) {
   // console.log(input);
   for (var i = 0; i < input.length; i++) {
-    var html = `<li class="list-group-item" data-id=${input[i].id}>${input[i].title}
+    var html = `<li class="list-group-item" data-id=${input[i].id}> ${input[i].title}
 
 	<button
 		class="li-btn"
@@ -146,7 +147,7 @@ function upcomingParties(input) {
 	</div>
 		`;
 
-    $(".userEvents").append(html);
+    $(".attendEvents").append(html);
 
     $(document).on("click", ".li-btn-delete", (e) => {
       console.log(e.target.id);
