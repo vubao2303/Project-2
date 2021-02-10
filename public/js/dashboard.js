@@ -48,14 +48,14 @@ function hostedHtml(input) {
 		class="li-btn"
 		type="button"
 		data-toggle="collapse"
-		data-target="#inputInfo-hosted"
+		data-target="#${input[i].theme}"
 		aria-expanded="false"
 		aria-controls="inputInfo-hosted">
 		View Info
 	</button>
 </li>
 
-	<div class="collapse" id="inputInfo-hosted">
+	<div class="collapse" id="${input[i].theme}">
 		<div class="card card-body">
 			<span>Theme: ${input[i].theme}</span>
 			<span>Date: ${input[i].date}</span>
