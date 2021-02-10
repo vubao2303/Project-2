@@ -4,14 +4,17 @@
         a progessive visual 
 
 \*-----------------------------*/
-html,
-body {
+.front-page {
   background: lightgrey;
   height: 100vh;
   background-image: url(bg.jpeg);
 }
+.index-body {
+  background-image: url(cloud.jpeg);
+  background-repeat:no-repeat;
+}
 
-/** Removing base link styling */
+/** Removing base link styling
 
 a:link,
 a:visited,
@@ -25,7 +28,7 @@ a:active {
 
 /*? Nav Style */
 .navbar {
-  background-color: white;
+  background-image: url("PartyX.jpeg");
   box-shadow: 0px 1px 5px;
 }
 
@@ -97,8 +100,8 @@ a:active {
 }
 
 .li-btn {
-  background-color: lightseagreen;
-  color: white;
+  background-color:wheat;
+  color:black;
   margin-left: 10px;
   border-radius: 5px;
   border: none;
@@ -106,7 +109,7 @@ a:active {
 }
 
 .li-btn-delete {
-  background-color: red;
+  background-color:salmon;
   color: white;
   border: none;
   border-radius: 5px;
@@ -115,7 +118,7 @@ a:active {
 }
 
 .modal-submit-btn {
-  background: lightseagreen;
+  background: wheat;
   color: white;
   padding: 5px 30px;
   border-radius: 5px;
@@ -190,7 +193,9 @@ html {
 
 .create-btn
 {
-  background-color: black;
+  background-color:gray;
+  color:black;
+  font-weight: bold;
 }
 
 /* footerstyling  */
@@ -209,4 +214,49 @@ html {
 .fa-linkedin {
   background: #007bb5;
   color: white;
+}
+
+.big-pad{
+  background-image: url(soap.png);
+}
+.dropdown{
+  background-image: url(simple.jpeg);
+  border-radius: 25px;
+  background-position: left top;;
+}
+
+.member-name,.card-title {
+  font-family: "Sofia", sans-serif;
+  font-weight: bolder;
+}
+/* style cards */
+
+
+#createEvent{
+  background-image: url(soap.png);
+  border-radius: 25px;
+  background-position: left top;
+}
+#upcoming {
+  border-radius: 25px;
+  background-image: url(pn2.png);
+  background-position: left top;
+}
+
+#allEvents {
+  background-image: url(pn2.png);
+}
+
+.card-title{
+  color: wheat;
+}
+
+#allEvents{
+  border-radius: 25px;
+  background-image: url(pn2.png);
+  background-position: left top;
+  /* background-repeat: repeat; */
+  /* padding: 20px;
+  width: 200px;
+  height: 150px; */
 }

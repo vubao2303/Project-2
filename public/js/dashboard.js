@@ -14,10 +14,6 @@ $(document).ready(function () {
 
   $(document).on("click", ".attend-btn", function (e) {
     id = e.target.id;
-<<<<<<< HEAD
-=======
-    console.log(id);
->>>>>>> 7d9f1c2ab1b9db7bff227cfd33d942935b06b8d8
     $.post("/api/addattendee/" + id).then(() => {
       window.location.reload();
     });
@@ -26,11 +22,7 @@ $(document).ready(function () {
   $(document).on("click", "PLACEHOLDER", function (e) {
     id = e.target.id;
     $.get("/api/unattend/" + id).then(() => {
-<<<<<<< HEAD
       window.location.reload()
-=======
-      window.location.reload();
->>>>>>> 7d9f1c2ab1b9db7bff227cfd33d942935b06b8d8
     });
   });
 
@@ -44,14 +36,11 @@ $(document).ready(function () {
 
   $.get("/api/availableparty").then((response) => {
     allParties(response);
-<<<<<<< HEAD
   });
 
   // get the user email/ or name clientside 
   $.get("/api/user_data").then(function(data) {
     $(".member-name").text(data.name);
-=======
->>>>>>> 7d9f1c2ab1b9db7bff227cfd33d942935b06b8d8
   });
 });
 
@@ -72,7 +61,7 @@ function hostedHtml(input) {
 </li>
 
 	<div class="collapse" id="${input[i].theme}">
-		<div class="card card-body">
+		<div class="card card-body dropdown">
 			<span>Theme: ${input[i].theme}</span>
 			<span>Date: ${input[i].date}</span>
 			<span>Time: ${input[i].time}</span>
@@ -113,13 +102,9 @@ function allParties(input) {
   </li>
 
   <div class="collapse" id="${input[i].theme}">
-    <div class="card card-body">
+    <div class="card card-body dropdown">
 
-<<<<<<< HEAD
       <p class="host-name">Host:{$input[i].name}</p> 
-=======
-      <p class="host-name">Host: ${input[i].name}</p> 
->>>>>>> 7d9f1c2ab1b9db7bff227cfd33d942935b06b8d8
 
 
       <p>Theme:${input[i].theme}</p>
@@ -152,7 +137,7 @@ function upcomingParties(input) {
 </li>
 
 	<div class="collapse" id="${input[i].theme}">
-		<div class="card card-body">
+		<div class="card card-body dropdown">
 
       <p class="host-name">Host: ${input[i].name}</p>
 
