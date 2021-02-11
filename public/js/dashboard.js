@@ -65,7 +65,7 @@ function hostedHtml(input) {
 		<div class="card card-body dropdown">
 			<span>Theme: ${input[i].theme}</span>
 			<span>Date: ${moment(input[i].date).format("dddd, MMMM Do YYYY")}</span>
-			<span>Time: ${moment(input[i].time).format()}</span>
+			<span>Time: ${input[i].time}</span>
 			<span>Location: ${input[i].location}</span>
 			<hr />
 			<span><button id=${input[i].id} class="li-btn-delete" data-id=${
