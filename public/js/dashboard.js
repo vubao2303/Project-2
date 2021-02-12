@@ -65,7 +65,7 @@ function hostedHtml(input) {
 		<div class="card card-body dropdown">
 			<span>Theme: ${input[i].theme}</span>
 			<span>Date: ${moment(input[i].date).format("dddd, MMMM Do YYYY")}</span>
-			<span>Time: ${moment(input[i].time).format()}</span>
+			<span>Time: ${moment(input[i].time, "hh:mm:ss").format("h:mm a")}</span>
 			<span>Location: ${input[i].location}</span>
 			<hr />
 			<span><button id=${input[i].id} class="li-btn-delete" data-id=${
@@ -115,7 +115,7 @@ function allParties(input) {
       <p>Theme: ${input[i].theme}</p>
       <p>Location: ${input[i].location}</p>
       <p>Date: ${moment(input[i].date).format("dddd, MMMM Do YYYY")}</p>
-      <p>Time: ${input[i].time}</p>
+      <p>Time: ${moment(input[i].time, "hh:mm:ss").format("h:mm a")}</p>
       <hr />
       <button id=${input[i].id} class="attend-btn li-btn" data-id=${
       input[i].id
@@ -152,12 +152,12 @@ function upcomingParties(input) {
 
 			<span>Theme: ${input[i].theme}</span>
 			<span>Date: ${moment(input[i].date).format("dddd, MMMM Do YYYY")}</span>
-			<span>Time: ${input[i].time}</span>
+			<span>Time: ${moment(input[i].time, "hh:mm:ss").format("h:mm a")}</span>
 			<span>Location: ${input[i].location}</span>
 			<hr />
-			<span><button id=${input[i].id} class="unAttend-btn li-btn" data-id=${
+		<button id=${input[i].id} class="unAttend-btn li-btn" data-id=${
       input[i].id
-    }>Unattend</button></span>
+    }>Unattend</button>
 		</div>
 	</div>
 		`;

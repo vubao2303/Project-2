@@ -1,7 +1,10 @@
 /*-----------------------------*\
 
-      Rough styling just for 
-        a progessive visual 
+          Page Styling
+          
+      * Needs to be organized
+  * Extremely hard to understand
+       Organize by page flow
 
 \*-----------------------------*/
 .front-page {
@@ -14,12 +17,12 @@
   background-repeat: no-repeat;
 }
 
-/** Removing base link styling
+/** Removing base link styling */
 
 a:link,
 a:visited,
 a:hover,
-a:active {
+a:activ {
   color: black;
   text-decoration: none;
 }
@@ -47,12 +50,12 @@ a:active {
   padding: 5px;
 }
 
-.user {
+/* .user {
   margin-top: 10px;
   font-size: 30px;
   font-weight: 600;
   text-align: center;
-}
+} */
 
 .row {
   margin-top: 20px;
@@ -220,7 +223,7 @@ html {
 }
 .dropdown {
   background-image: url(simple.jpeg);
-  border-radius: 25px;
+  border-radius: 0px 0px 15px 15px;
   background-position: left top;
 }
 
