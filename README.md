@@ -65,7 +65,7 @@ Demo Video:
    </ul>
    
 * In server.js file
- <ul> 
+   <ul> 
   <li> Requiring necessary npm packages
   <li> Setting up port and requiring models for syncing
   <li> Creating express app and configuring middleware needed for authentication
