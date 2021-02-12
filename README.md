@@ -1,6 +1,6 @@
 # Party-X
 
-Project description here
+Welcome to the party! This full stack application built using MVC framework is a major milestone in the progression of four fledgling developers. Together we created an application that allows a user to create an account and login to an account dashboard. The dashboard will show the user a list of events that they can attend, view the upcomming events, and create events of their own.
 
 - Full stack application deployed to Heroku
 - Team build requiring constant communication
