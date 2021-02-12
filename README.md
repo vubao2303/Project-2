@@ -60,15 +60,12 @@ Choose somewhere to store this gif: Root? Its own folder?
 
 ## Code Snippet
 
-Snippit of the use of sequelize operators. [Op.not] was used to set a condition that finds all Parties where the hostId is not equivalent to the userId in order to prevent duplicate events being created.
+Snippet of the use of sequelize operators. [Op.not] was used to set a condition that finds all Parties where the hostId is not equivalent to the userId in order to prevent duplicate events being created.
 ```javascript
 
-// route used to get all events
+
   app.get("/api/availableparty", (req, res) => {
-    // search Event table for all events
-    console.log("made it to events");
     db.Party.findAll({
-      // join User since it contains the host's name
       where: {
         hostId: {
           [Op.not]: req.user.id,
