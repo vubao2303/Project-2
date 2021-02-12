@@ -63,6 +63,16 @@ Demo Video:
   <li> A javascript file where it will listen to the clients on click function and send Ajax call to the back end
   </li>
    </ul>
+   
+* In server.js file
+ <ul> 
+  <li> Requiring necessary npm packages
+  <li> Setting up port and requiring models for syncing
+  <li> Creating express app and configuring middleware needed for authentication
+  <li> Requiring our routes
+  <li> Listen to port to activate the server 
+  </li>
+  </ul>
 
 
 
@@ -95,15 +105,6 @@ Snippet of the use of sequelize operators. [Op.not] was used to set a condition 
         res.send(false);
       });
   });
-```
-Sets up the Express app to handle data parsing
-``` Javascript
-
-```
-
-Set routes to handle when user "visit" the page 
-``` Javascript
-
 ```
 
 Use Passport to authenticate file. If there's no user with the given email or passwords, an error message will show. 
