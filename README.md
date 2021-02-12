@@ -40,8 +40,7 @@ Demo Video:
   <li> passport.js file to authenticate using local strategy 
   </li>
   </ul>
-
-* In another 
+* In models folder 
   <ul> 
   <li> 
   <li> 
@@ -49,12 +48,19 @@ Demo Video:
   </li>
   </ul>
 
-
-* In another file 
+* In routes folder to handle when the user "visit" the page
   <ul> 
-  <li> 
-  <li> 
-  <li> 
+  <li> Html routes that serve up the html page when client calls
+  <li> API routes to serve up JSON object use to populate the page 
+  </li>
+  </ul>
+
+
+* In public folder
+  <ul> 
+  <li> A css folder with images and styling
+  <li> And html folder with the signup.html file and index.html file
+  <li> A javascript file where it will listen to the clients on click function and send Ajax call to the back end
   </li>
    </ul>
 
