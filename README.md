@@ -75,9 +75,36 @@ Set routes to handle when user "visit" the page
 
 ```
 
-do this because 
+Use Passport to authenticate file. If there's no user with the given email or passwords, an error message will show. 
 ``` Javascript 
+passport.use(new LocalStrategy(
+  {usernameField: "email"},
+  function(email, password, done) {db.User.findOne({
+      where: {email: email}
+    }).then(function(dbUser) {
+      if (!dbUser) {
+        return done(null, false, {
+          message: "Incorrect email."
+        });
+      }
+      else if (!dbUser.validPassword(password)) {
+        return done(null, false, {
+          message: "Incorrect password."
+        });
+      }
+      return done(null, dbUser);
+    });
+  }
+));
+```
 
+In order to help keep authentication state across HTTP requests, Sequelize needs to serialize and deserialize the user
+``` Javascript 
+passport.serializeUser(function(user, cb) {
+  cb(null, user);});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);});
 ```
 
 ## Technologies Used
