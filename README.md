@@ -45,7 +45,8 @@ Demo Video:
   <li> index.js which sequelizes all model files stored in this directory
   <li> party.js to create Party table in MySQL. Associates Party table to User and UserParty tables
   <li> user.js to create User table in MySQL. Associates User table to Party and UserParty tables
-  </li> UserParty.js is a join table of both the User and Party tables
+  <li> UserParty.js is a join table of both the User and Party tables
+  </li> 
   </ul>
 
 - In routes folder to handle when the user "visit" the page
