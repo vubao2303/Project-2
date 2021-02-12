@@ -60,11 +60,37 @@ Choose somewhere to store this gif: Root? Its own folder?
 
 ## Code Snippet
 
-Required variables 
-``` Javascript
+Snippit of the use of sequelize operators. [Op.not] was used to set a condition that finds all Parties where the hostId is not equivalent to the userId in order to prevent duplicate events being created.
+```javascript
 
+// route used to get all events
+  app.get("/api/availableparty", (req, res) => {
+    // search Event table for all events
+    console.log("made it to events");
+    db.Party.findAll({
+      // join User since it contains the host's name
+      where: {
+        hostId: {
+          [Op.not]: req.user.id,
+        },
+      },
+      include: [
+        {
+          model: db.User,
+          as: "host",
+          attributes: ["name"],
+        },
+      ],
+    })
+      .then((events) => {
+        res.json(events);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(false);
+      });
+  });
 ```
-
 Sets up the Express app to handle data parsing
 ``` Javascript
 
