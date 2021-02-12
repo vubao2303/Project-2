@@ -156,7 +156,7 @@ passport.deserializeUser(function(obj, cb) {
 |**B Tram Vu**|[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/b-tram-vu-866250121/)  [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/vubao2303)
 |**Jaja Brown**|[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/jaja-brown-a42261201/) [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/jbrown827)
 |**Ron-Arjay Caluag**|[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/ron-arjay-caluag-00b29b182/) [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/ArjayCaluag)
-|**Coleman Buffa**|[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](hhttps://www.linkedin.com/in/coleman-buffa/) [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/coleman-buffa)
+|**Coleman Buffa**|[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/coleman-buffa/) [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/coleman-buffa)
 
 ---
 
