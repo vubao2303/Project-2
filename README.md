@@ -5,10 +5,12 @@ Project description here
 * Team build requiring constant communication
 * Git tracked project in rapid development process
 
-![Demo Video]()
-Choose somewhere to store this gif: Root? Its own folder?  
+<img width="1249" alt="project2 - mainpage" src="https://user-images.githubusercontent.com/52800632/107716276-ded6c780-6c85-11eb-9446-1a56a2f0e975.png">
 
-![Site Picture]()  
+Demo Video:
+![templateengine](https://user-images.githubusercontent.com/52800632/107716420-3a08ba00-6c86-11eb-8f3c-83bfae0e94f4.gif)
+
+
 
 ## Table of Contents 
 
