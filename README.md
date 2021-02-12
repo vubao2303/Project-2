@@ -28,14 +28,14 @@ Choose somewhere to store this gif: Root? Its own folder?
 
 ## Heroku-Deployed
 
-[Deployed Link]()
+[Deployed Link](https://party-x.herokuapp.com/)
 
 ## Description of Page Building 
-* In one file
+* In config file
    <ul> 
-  <li> 
-  <li> 
-  <li> 
+  <li> A middleware file that contains authenticated file
+  <li> Config.json file
+  <li> passport.js file to authenticate using local strategy 
   </li>
   </ul>
 
